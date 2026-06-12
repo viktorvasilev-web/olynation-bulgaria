@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <title>OlyNation България</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+
+      <img src="images/logo.png" alt="OlyNation България" class="main-logo" />
+
+      <h1>OlyNation България</h1>
+
+      <p>
+        Вътрешен портал за видеа, събития и ресурси
+      </p>
+
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Основно меню">
+    <button class="tab active" data-section="backoffice">Бекофис</button>
+    <button class="tab" data-section="events">Събития</button>
+    <button class="tab" data-section="translations">Видеа</button>
+    <button class="tab" data-section="resources">Ресурси</button>
+  </nav>
+
+  <main class="container">
+
+    <!-- Бекофис -->
+    <section id="backoffice" class="content-section active">
+      <div class="section-head">
+        <h2>Бекофис видеа</h2>
+        <span id="count-backoffice"></span>
+      </div>
+      <div class="cards" id="list-backoffice"></div>
+    </section>
+
+    <!-- Събития -->
+    <section id="events" class="content-section">
+      <div class="section-head">
+        <h2>Събития на живо</h2>
+        <span id="count-events"></span>
+      </div>
+      <div class="cards" id="list-events"></div>
+    </section>
+
+    <!-- Видеа -->
+    <section id="translations" class="content-section">
+      <div class="section-head">
+        <h2>Видеа</h2>
+        <span id="count-translations"></span>
+      </div>
+      <div class="cards" id="list-translations"></div>
+    </section>
+
+    <!-- Ресурси -->
+    <section id="resources" class="content-section">
+      <div class="section-head">
+        <h2>Ресурси</h2>
+        <span id="count-resources"></span>
+      </div>
+      <div class="cards" id="list-resources"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 OlyNation България
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
