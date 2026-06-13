@@ -1,4 +1,5 @@
 const SHEET_ID = '1S821JtStrzWv9RZFSsOMCvYYuRKT6wL2DYQ-jzbrD_8';
+const BANNER_SHEET = 'Банер';
 
 const SECTIONS = [
   { id: 'backoffice', sheet: 'Бекофис', fallbackSheet: 'Бекофис Видеа', icon: '▶', action: 'Отвори' },
@@ -87,6 +88,28 @@ function tableToItems(table, isEvent = false) {
       isEvent,
     };
   }).filter(item => item.title && item.link && item.visible);
+}
+
+async function loadBanner() {
+  const banner = document.getElementById('promo-banner');
+  if (!banner) return;
+
+  try {
+    const table = await loadSheetWithJsonp(BANNER_SHEET);
+    const items = tableToItems(table);
+
+    if (!items.length) {
+      banner.style.display = 'none';
+      return;
+    }
+
+    banner.textContent = items[0].title;
+    banner.href = items[0].link;
+    banner.style.display = 'block';
+  } catch (err) {
+    banner.style.display = 'none';
+    console.error('Banner error:', err);
+  }
 }
 
 async function loadSheet(section) {
@@ -194,6 +217,8 @@ function setupTabs() {
 
 async function init() {
   setupTabs();
+  await loadBanner();
+
   for (const section of SECTIONS) {
     try {
       const items = await loadSheet(section);
