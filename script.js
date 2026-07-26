@@ -19,11 +19,10 @@ const LANGUAGES = [
   { id: 'hebrew', name: 'Иврит', sheetName: 'Hebrew' },
   { id: 'norwegian', name: 'Норвежки', sheetName: 'Norwegian' },
   { id: 'danish', name: 'Датски', sheetName: 'Danish' },
-  { id: 'bulgarian', name: 'Български', sheetName: 'Bulgarian' },
   { id: 'hungarian', name: 'Унгарски', sheetName: 'Hungarian' },
 ];
 
-let languageMaterials = [];
+let languageContents = [];
 
 const SECTIONS = [
   { id: 'backoffice', sheet: 'Бекофис', fallbackSheet: 'Бекофис Видеа', icon: '▶', action: 'Отвори' },
@@ -119,11 +118,10 @@ function tableToLanguageItems(table) {
 
   const headers = table.cols.map(col => normalize(col.label));
   const languageIndex = headers.indexOf('език');
-  const titleIndex = headers.indexOf('заглавие');
-  const linkIndex = headers.indexOf('линк');
+  const contentIndex = headers.indexOf('съдържание');
   const visibleIndex = headers.indexOf('видим');
 
-  if (languageIndex === -1 || titleIndex === -1 || linkIndex === -1) return [];
+  if (languageIndex === -1 || contentIndex === -1) return [];
 
   return table.rows.map(row => {
     const cells = row.c || [];
@@ -134,11 +132,10 @@ function tableToLanguageItems(table) {
 
     return {
       language: normalize(get(languageIndex)),
-      title: get(titleIndex),
-      link: get(linkIndex),
+      content: get(contentIndex),
       visible: visibleIndex === -1 ? true : isVisible(get(visibleIndex)),
     };
-  }).filter(item => item.language && item.title && item.link && item.visible);
+  }).filter(item => item.language && item.content && item.visible);
 }
 
 async function loadBanner() {
@@ -262,84 +259,60 @@ function renderLanguages() {
 
   count.textContent = `${LANGUAGES.length} езика`;
   list.innerHTML = LANGUAGES.map(language => {
-    const materialsCount = getLanguageMaterials(language).length;
-    const subtitle = materialsCount
-      ? `${materialsCount} ${materialsCount === 1 ? 'материал' : 'материала'}`
-      : 'Очаква материали';
+    const content = getLanguageContent(language);
 
     return `
-      <button class="language-card" type="button" data-language="${language.id}">
+      <div class="language-card">
         <span class="language-name">${escapeHTML(language.name)}</span>
-        <span class="language-subtitle">${subtitle}</span>
-      </button>
+        <button
+          class="copy-language-button"
+          type="button"
+          data-language="${language.id}"
+          ${content ? '' : 'disabled'}
+        >Копирай</button>
+      </div>
     `;
   }).join('');
 
-  list.querySelectorAll('.language-card').forEach(button => {
-    button.addEventListener('click', () => openLanguage(button.dataset.language));
+  list.querySelectorAll('.copy-language-button').forEach(button => {
+    button.addEventListener('click', () => copyLanguageContent(button));
   });
 }
 
-function getLanguageMaterials(language) {
+function getLanguageContent(language) {
   const acceptedNames = [language.name, language.sheetName, language.id].map(normalize);
-  return languageMaterials.filter(item => acceptedNames.includes(item.language));
+  const item = languageContents.find(entry => acceptedNames.includes(entry.language));
+  return item?.content || '';
 }
 
-function openLanguage(languageId) {
-  const language = LANGUAGES.find(item => item.id === languageId);
-  if (!language) return;
+async function copyLanguageContent(button) {
+  const language = LANGUAGES.find(item => item.id === button.dataset.language);
+  const content = language ? getLanguageContent(language) : '';
+  if (!content) return;
 
-  const items = getLanguageMaterials(language);
-  const overview = document.getElementById('languages-overview');
-  const detail = document.getElementById('language-detail');
-  const title = document.getElementById('language-title');
-  const count = document.getElementById('language-material-count');
-  const list = document.getElementById('language-materials');
+  try {
+    await navigator.clipboard.writeText(content);
+    button.textContent = 'Копирано!';
+    button.classList.add('copied');
 
-  overview.hidden = true;
-  detail.hidden = false;
-  title.textContent = language.name;
-  count.textContent = `${items.length} ${items.length === 1 ? 'материал' : 'материала'}`;
-
-  if (!items.length) {
-    list.innerHTML = '<div class="empty">Все още няма добавени материали за този език.</div>';
-    return;
+    setTimeout(() => {
+      button.textContent = 'Копирай';
+      button.classList.remove('copied');
+    }, 1400);
+  } catch (err) {
+    button.textContent = 'Грешка';
+    setTimeout(() => {
+      button.textContent = 'Копирай';
+    }, 1400);
   }
-
-  list.innerHTML = items.map(item => `
-    <a class="card" href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer">
-      <div>
-        <p class="card-title">🌐 ${escapeHTML(item.title)}</p>
-      </div>
-      <button
-        class="copy-button"
-        type="button"
-        aria-label="Копирай линка"
-        title="Копирай линка"
-        data-link="${escapeHTML(item.link)}"
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="9" y="9" width="11" height="11" rx="3" stroke="currentColor" stroke-width="2"/>
-          <rect x="4" y="4" width="11" height="11" rx="3" stroke="currentColor" stroke-width="2"/>
-        </svg>
-      </button>
-    </a>
-  `).join('');
-
-  setupCopyButtons();
-}
-
-function closeLanguage() {
-  document.getElementById('languages-overview').hidden = false;
-  document.getElementById('language-detail').hidden = true;
 }
 
 async function loadLanguages() {
   try {
     const table = await loadSheetWithJsonp(LANGUAGES_SHEET);
-    languageMaterials = tableToLanguageItems(table);
+    languageContents = tableToLanguageItems(table);
   } catch (err) {
-    languageMaterials = [];
+    languageContents = [];
     console.info('Езиковите категории са готови; табът „Езици“ още не е наличен.');
   }
 
@@ -352,11 +325,8 @@ function setupTabs() {
       const target = button.dataset.section;
       document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === button));
       document.querySelectorAll('.content-section').forEach(s => s.classList.toggle('active', s.id === target));
-      if (target !== 'languages') closeLanguage();
     });
   });
-
-  document.getElementById('back-to-languages').addEventListener('click', closeLanguage);
 }
 
 async function init() {
