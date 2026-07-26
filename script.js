@@ -72,6 +72,7 @@ function loadSheetWithJsonp(sheetName) {
 
     const url = new URL(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq`);
     url.searchParams.set('sheet', sheetName);
+    url.searchParams.set('headers', '1');
     url.searchParams.set('tq', 'select *');
     url.searchParams.set('tqx', `responseHandler:${callbackName}`);
 
