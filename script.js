@@ -3,23 +3,23 @@ const BANNER_SHEET = 'Банер';
 const LANGUAGES_SHEET = 'Езици';
 
 const LANGUAGES = [
-  { id: 'english', name: 'Английски', sheetName: 'English' },
-  { id: 'french', name: 'Френски', sheetName: 'French' },
-  { id: 'spanish-spain', name: 'Испански (Испания)', sheetName: 'Spanish Spain' },
-  { id: 'spanish-mexico', name: 'Испански (Мексико)', sheetName: 'Spanish Mexico' },
-  { id: 'italian', name: 'Италиански', sheetName: 'Italian' },
-  { id: 'portuguese', name: 'Португалски', sheetName: 'Portuguese' },
-  { id: 'german', name: 'Немски', sheetName: 'German' },
-  { id: 'greek', name: 'Гръцки', sheetName: 'Greek' },
-  { id: 'dutch', name: 'Нидерландски', sheetName: 'Dutch' },
-  { id: 'russian', name: 'Руски', sheetName: 'Russian' },
-  { id: 'swedish', name: 'Шведски', sheetName: 'Swedish' },
-  { id: 'polish', name: 'Полски', sheetName: 'Polish' },
-  { id: 'japanese', name: 'Японски', sheetName: 'Japanese' },
-  { id: 'hebrew', name: 'Иврит', sheetName: 'Hebrew' },
-  { id: 'norwegian', name: 'Норвежки', sheetName: 'Norwegian' },
-  { id: 'danish', name: 'Датски', sheetName: 'Danish' },
-  { id: 'hungarian', name: 'Унгарски', sheetName: 'Hungarian' },
+  { id: 'english', name: 'Английски' },
+  { id: 'french', name: 'Френски' },
+  { id: 'spanish-spain', name: 'Испански (Испания)' },
+  { id: 'spanish-mexico', name: 'Испански (Мексико)' },
+  { id: 'italian', name: 'Италиански' },
+  { id: 'portuguese', name: 'Португалски' },
+  { id: 'german', name: 'Немски' },
+  { id: 'greek', name: 'Гръцки' },
+  { id: 'dutch', name: 'Нидерландски' },
+  { id: 'russian', name: 'Руски' },
+  { id: 'swedish', name: 'Шведски' },
+  { id: 'polish', name: 'Полски' },
+  { id: 'japanese', name: 'Японски' },
+  { id: 'hebrew', name: 'Иврит' },
+  { id: 'norwegian', name: 'Норвежки' },
+  { id: 'danish', name: 'Датски' },
+  { id: 'hungarian', name: 'Унгарски' },
 ];
 
 let languageContents = [];
@@ -118,23 +118,15 @@ function tableToLanguageItems(table) {
   if (!table || !table.cols || !table.rows) return [];
 
   const headers = table.cols.map(col => normalize(col.label));
-  const languageIndex = headers.indexOf('език');
   const contentIndex = headers.indexOf('съдържание');
 
-  if (languageIndex === -1 || contentIndex === -1) return [];
+  if (contentIndex === -1) return [];
 
   return table.rows.map(row => {
     const cells = row.c || [];
-    const get = index => {
-      if (index === -1 || !cells[index]) return '';
-      return cells[index].f || cells[index].v || '';
-    };
-
-    return {
-      language: normalize(get(languageIndex)),
-      content: get(contentIndex),
-    };
-  }).filter(item => item.language && item.content);
+    if (!cells[contentIndex]) return '';
+    return cells[contentIndex].f || cells[contentIndex].v || '';
+  });
 }
 
 async function loadBanner() {
@@ -257,8 +249,8 @@ function renderLanguages() {
   const count = document.getElementById('count-languages');
 
   count.textContent = `${LANGUAGES.length} езика`;
-  list.innerHTML = LANGUAGES.map(language => {
-    const content = getLanguageContent(language);
+  list.innerHTML = LANGUAGES.map((language, index) => {
+    const content = getLanguageContent(index);
 
     return `
       <div class="language-card">
@@ -285,15 +277,13 @@ function renderLanguages() {
   });
 }
 
-function getLanguageContent(language) {
-  const acceptedNames = [language.name, language.sheetName, language.id].map(normalize);
-  const item = languageContents.find(entry => acceptedNames.includes(entry.language));
-  return item?.content || '';
+function getLanguageContent(languageIndex) {
+  return languageContents[languageIndex] || '';
 }
 
 async function copyLanguageContent(button) {
-  const language = LANGUAGES.find(item => item.id === button.dataset.language);
-  const content = language ? getLanguageContent(language) : '';
+  const languageIndex = LANGUAGES.findIndex(item => item.id === button.dataset.language);
+  const content = languageIndex === -1 ? '' : getLanguageContent(languageIndex);
   if (!content) return;
   const originalHTML = button.innerHTML;
 
