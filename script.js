@@ -119,7 +119,6 @@ function tableToLanguageItems(table) {
   const headers = table.cols.map(col => normalize(col.label));
   const languageIndex = headers.indexOf('език');
   const contentIndex = headers.indexOf('съдържание');
-  const visibleIndex = headers.indexOf('видим');
 
   if (languageIndex === -1 || contentIndex === -1) return [];
 
@@ -133,9 +132,8 @@ function tableToLanguageItems(table) {
     return {
       language: normalize(get(languageIndex)),
       content: get(contentIndex),
-      visible: visibleIndex === -1 ? true : isVisible(get(visibleIndex)),
     };
-  }).filter(item => item.language && item.content && item.visible);
+  }).filter(item => item.language && item.content);
 }
 
 async function loadBanner() {
