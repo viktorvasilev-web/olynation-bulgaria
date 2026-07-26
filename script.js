@@ -1,5 +1,29 @@
 const SHEET_ID = '1S821JtStrzWv9RZFSsOMCvYYuRKT6wL2DYQ-jzbrD_8';
 const BANNER_SHEET = 'Банер';
+const LANGUAGES_SHEET = 'Езици';
+
+const LANGUAGES = [
+  { id: 'english', name: 'Английски', sheetName: 'English' },
+  { id: 'french', name: 'Френски', sheetName: 'French' },
+  { id: 'spanish-spain', name: 'Испански (Испания)', sheetName: 'Spanish Spain' },
+  { id: 'spanish-mexico', name: 'Испански (Мексико)', sheetName: 'Spanish Mexico' },
+  { id: 'italian', name: 'Италиански', sheetName: 'Italian' },
+  { id: 'portuguese', name: 'Португалски', sheetName: 'Portuguese' },
+  { id: 'german', name: 'Немски', sheetName: 'German' },
+  { id: 'greek', name: 'Гръцки', sheetName: 'Greek' },
+  { id: 'dutch', name: 'Нидерландски', sheetName: 'Dutch' },
+  { id: 'russian', name: 'Руски', sheetName: 'Russian' },
+  { id: 'swedish', name: 'Шведски', sheetName: 'Swedish' },
+  { id: 'polish', name: 'Полски', sheetName: 'Polish' },
+  { id: 'japanese', name: 'Японски', sheetName: 'Japanese' },
+  { id: 'hebrew', name: 'Иврит', sheetName: 'Hebrew' },
+  { id: 'norwegian', name: 'Норвежки', sheetName: 'Norwegian' },
+  { id: 'danish', name: 'Датски', sheetName: 'Danish' },
+  { id: 'bulgarian', name: 'Български', sheetName: 'Bulgarian' },
+  { id: 'hungarian', name: 'Унгарски', sheetName: 'Hungarian' },
+];
+
+let languageMaterials = [];
 
 const SECTIONS = [
   { id: 'backoffice', sheet: 'Бекофис', fallbackSheet: 'Бекофис Видеа', icon: '▶', action: 'Отвори' },
@@ -88,6 +112,33 @@ function tableToItems(table, isEvent = false) {
       isEvent,
     };
   }).filter(item => item.title && item.link && item.visible);
+}
+
+function tableToLanguageItems(table) {
+  if (!table || !table.cols || !table.rows) return [];
+
+  const headers = table.cols.map(col => normalize(col.label));
+  const languageIndex = headers.indexOf('език');
+  const titleIndex = headers.indexOf('заглавие');
+  const linkIndex = headers.indexOf('линк');
+  const visibleIndex = headers.indexOf('видим');
+
+  if (languageIndex === -1 || titleIndex === -1 || linkIndex === -1) return [];
+
+  return table.rows.map(row => {
+    const cells = row.c || [];
+    const get = index => {
+      if (index === -1 || !cells[index]) return '';
+      return cells[index].f || cells[index].v || '';
+    };
+
+    return {
+      language: normalize(get(languageIndex)),
+      title: get(titleIndex),
+      link: get(linkIndex),
+      visible: visibleIndex === -1 ? true : isVisible(get(visibleIndex)),
+    };
+  }).filter(item => item.language && item.title && item.link && item.visible);
 }
 
 async function loadBanner() {
@@ -205,19 +256,113 @@ function renderError(section, err) {
   console.error(section.sheet, err);
 }
 
+function renderLanguages() {
+  const list = document.getElementById('list-languages');
+  const count = document.getElementById('count-languages');
+
+  count.textContent = `${LANGUAGES.length} езика`;
+  list.innerHTML = LANGUAGES.map(language => {
+    const materialsCount = getLanguageMaterials(language).length;
+    const subtitle = materialsCount
+      ? `${materialsCount} ${materialsCount === 1 ? 'материал' : 'материала'}`
+      : 'Очаква материали';
+
+    return `
+      <button class="language-card" type="button" data-language="${language.id}">
+        <span class="language-name">${escapeHTML(language.name)}</span>
+        <span class="language-subtitle">${subtitle}</span>
+      </button>
+    `;
+  }).join('');
+
+  list.querySelectorAll('.language-card').forEach(button => {
+    button.addEventListener('click', () => openLanguage(button.dataset.language));
+  });
+}
+
+function getLanguageMaterials(language) {
+  const acceptedNames = [language.name, language.sheetName, language.id].map(normalize);
+  return languageMaterials.filter(item => acceptedNames.includes(item.language));
+}
+
+function openLanguage(languageId) {
+  const language = LANGUAGES.find(item => item.id === languageId);
+  if (!language) return;
+
+  const items = getLanguageMaterials(language);
+  const overview = document.getElementById('languages-overview');
+  const detail = document.getElementById('language-detail');
+  const title = document.getElementById('language-title');
+  const count = document.getElementById('language-material-count');
+  const list = document.getElementById('language-materials');
+
+  overview.hidden = true;
+  detail.hidden = false;
+  title.textContent = language.name;
+  count.textContent = `${items.length} ${items.length === 1 ? 'материал' : 'материала'}`;
+
+  if (!items.length) {
+    list.innerHTML = '<div class="empty">Все още няма добавени материали за този език.</div>';
+    return;
+  }
+
+  list.innerHTML = items.map(item => `
+    <a class="card" href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer">
+      <div>
+        <p class="card-title">🌐 ${escapeHTML(item.title)}</p>
+      </div>
+      <button
+        class="copy-button"
+        type="button"
+        aria-label="Копирай линка"
+        title="Копирай линка"
+        data-link="${escapeHTML(item.link)}"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="9" y="9" width="11" height="11" rx="3" stroke="currentColor" stroke-width="2"/>
+          <rect x="4" y="4" width="11" height="11" rx="3" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+    </a>
+  `).join('');
+
+  setupCopyButtons();
+}
+
+function closeLanguage() {
+  document.getElementById('languages-overview').hidden = false;
+  document.getElementById('language-detail').hidden = true;
+}
+
+async function loadLanguages() {
+  try {
+    const table = await loadSheetWithJsonp(LANGUAGES_SHEET);
+    languageMaterials = tableToLanguageItems(table);
+  } catch (err) {
+    languageMaterials = [];
+    console.info('Езиковите категории са готови; табът „Езици“ още не е наличен.');
+  }
+
+  renderLanguages();
+}
+
 function setupTabs() {
   document.querySelectorAll('.tab').forEach(button => {
     button.addEventListener('click', () => {
       const target = button.dataset.section;
       document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === button));
       document.querySelectorAll('.content-section').forEach(s => s.classList.toggle('active', s.id === target));
+      if (target !== 'languages') closeLanguage();
     });
   });
+
+  document.getElementById('back-to-languages').addEventListener('click', closeLanguage);
 }
 
 async function init() {
   setupTabs();
   await loadBanner();
+  await loadLanguages();
 
   for (const section of SECTIONS) {
     try {

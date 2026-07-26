@@ -42,6 +42,7 @@
     <button class="tab active" data-section="backoffice">Бекофис</button>
     <button class="tab" data-section="events">Събития</button>
     <button class="tab" data-section="translations">Видеа</button>
+    <button class="tab" data-section="languages">Езици</button>
     <button class="tab" data-section="resources">Ресурси</button>
   </nav>
 
@@ -72,6 +73,29 @@
         <span id="count-translations"></span>
       </div>
       <div class="cards" id="list-translations"></div>
+    </section>
+
+    <!-- Езици -->
+    <section id="languages" class="content-section">
+      <div id="languages-overview">
+        <div class="section-head">
+          <div>
+            <h2>Езици</h2>
+            <p class="section-description">Избери език, за да видиш наличните материали.</p>
+          </div>
+          <span id="count-languages"></span>
+        </div>
+        <div class="language-grid" id="list-languages"></div>
+      </div>
+
+      <div id="language-detail" class="language-detail" hidden>
+        <button id="back-to-languages" class="back-button" type="button">← Всички езици</button>
+        <div class="section-head">
+          <h2 id="language-title"></h2>
+          <span id="language-material-count"></span>
+        </div>
+        <div class="cards" id="language-materials"></div>
+      </div>
     </section>
 
     <!-- Ресурси -->
