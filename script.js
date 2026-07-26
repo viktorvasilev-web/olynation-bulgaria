@@ -199,7 +199,7 @@ async function copyText(button, link) {
 }
 
 function setupCopyButtons() {
-  document.querySelectorAll('.copy-button').forEach(button => {
+  document.querySelectorAll('.copy-button[data-link]').forEach(button => {
     button.addEventListener('click', event => {
       event.preventDefault();
       event.stopPropagation();
@@ -265,16 +265,23 @@ function renderLanguages() {
       <div class="language-card">
         <span class="language-name">${escapeHTML(language.name)}</span>
         <button
-          class="copy-language-button"
+          class="copy-button language-copy-button"
           type="button"
           data-language="${language.id}"
+          aria-label="Копирай цялото съдържание за ${escapeHTML(language.name)}"
+          title="Копирай цялото съдържание"
           ${content ? '' : 'disabled'}
-        >Копирай</button>
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="9" y="9" width="11" height="11" rx="3" stroke="currentColor" stroke-width="2"/>
+            <rect x="4" y="4" width="11" height="11" rx="3" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
       </div>
     `;
   }).join('');
 
-  list.querySelectorAll('.copy-language-button').forEach(button => {
+  list.querySelectorAll('.language-copy-button').forEach(button => {
     button.addEventListener('click', () => copyLanguageContent(button));
   });
 }
@@ -289,6 +296,7 @@ async function copyLanguageContent(button) {
   const language = LANGUAGES.find(item => item.id === button.dataset.language);
   const content = language ? getLanguageContent(language) : '';
   if (!content) return;
+  const originalHTML = button.innerHTML;
 
   try {
     await navigator.clipboard.writeText(content);
@@ -296,13 +304,13 @@ async function copyLanguageContent(button) {
     button.classList.add('copied');
 
     setTimeout(() => {
-      button.textContent = 'Копирай';
+      button.innerHTML = originalHTML;
       button.classList.remove('copied');
     }, 1400);
   } catch (err) {
     button.textContent = 'Грешка';
     setTimeout(() => {
-      button.textContent = 'Копирай';
+      button.innerHTML = originalHTML;
     }, 1400);
   }
 }
