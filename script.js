@@ -20,6 +20,7 @@ const LANGUAGES = [
   { id: 'norwegian', name: 'Норвежки' },
   { id: 'danish', name: 'Датски' },
   { id: 'hungarian', name: 'Унгарски' },
+  { id: 'turkish', name: 'Турски' },
 ];
 
 let languageContents = [];
