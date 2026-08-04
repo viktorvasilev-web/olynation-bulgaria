@@ -90,8 +90,8 @@ button, input { font: inherit; }
 
 .product-logo {
   display: block;
-  width: 142px;
-  height: 142px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   margin: 0 auto 26px;
   filter: drop-shadow(0 0 28px rgba(112, 255, 72, .25));
@@ -270,7 +270,7 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
 
 @media (max-width: 560px) {
   .announcement { font-size: 12px; }
-  .product-logo { width: 112px; height: 112px; }
+  .product-logo { width: 100px; height: 100px; }
   .hero-description { font-size: 15px; }
   .content-section { padding: 10px 14px 60px; }
   .sound-prompt { font-size: 14px; }
