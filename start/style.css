@@ -100,10 +100,11 @@ button, input { font: inherit; }
 h1 {
   max-width: 1050px;
   margin: 0 auto;
-  font-size: clamp(35px, 5.5vw, 72px);
-  line-height: 1.05;
-  letter-spacing: -.045em;
-  font-weight: 900;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(45px, 6.5vw, 88px);
+  line-height: 1;
+  letter-spacing: -.02em;
+  font-weight: 700;
 }
 
 .hero-statement {
