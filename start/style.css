@@ -195,6 +195,17 @@ h1 {
 
 .benefits h2 { margin: 0 0 22px; font-size: clamp(18px, 2vw, 22px); }
 
+.benefits-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .24);
+}
+
 .benefit { display: grid; grid-template-columns: 28px 1fr; gap: 13px; }
 .benefit + .benefit { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--line); }
 .check { color: var(--green); font-size: 30px; font-weight: 900; line-height: 1; }
