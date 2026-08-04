@@ -124,7 +124,6 @@ h1 {
   font-size: clamp(14px, 1.5vw, 17px);
 }
 
-.primary-cta,
 .submit-button {
   display: inline-flex;
   justify-content: center;
@@ -140,8 +139,7 @@ h1 {
   transition: transform .18s ease, filter .18s ease;
 }
 
-.primary-cta { margin-top: 36px; padding: 16px 26px; }
-.primary-cta:hover, .submit-button:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.submit-button:hover { transform: translateY(-2px); filter: brightness(1.08); }
 
 .content-section {
   padding: 24px 24px 90px;
@@ -278,7 +276,6 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .benefit { grid-template-columns: 24px 1fr; }
   .benefit h3 { font-size: 19px; }
   .lead-section { width: calc(100% - 28px); margin-bottom: 60px; padding: 28px 20px; border-radius: 20px; }
-  .primary-cta { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
