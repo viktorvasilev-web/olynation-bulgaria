@@ -121,7 +121,7 @@ h1 {
   max-width: 900px;
   margin: 24px auto 0;
   color: var(--muted);
-  font-size: clamp(16px, 2vw, 20px);
+  font-size: clamp(14px, 1.5vw, 17px);
 }
 
 .primary-cta,
