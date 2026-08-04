@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OlyNation партньорска програма – готов продукт, система за старт и лична подкрепа.">
+  <meta name="theme-color" content="#061d18">
+  <title>OlyNation Партньорска програма</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="p90-logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="announcement">Нов лидер на пазара!</div>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+
+      <div class="hero-inner">
+        <p class="eyebrow">OlyNation партньорска програма</p>
+        <img class="product-logo" src="p90-logo.png" alt="P90 PEMF продукт">
+
+        <h1 id="page-title">Искаш да работиш за себе си, но не знаеш какво да продаваш?</h1>
+        <p class="hero-statement">Продуктът е готов. Системата е готова.<br><span>Ти готов ли си?</span></p>
+        <p class="hero-description">Изгради собствена клиентска и партньорска мрежа с технологични wellness продукти, готов 90-дневен план и лична подкрепа от мен.</p>
+
+        <a class="primary-cta" href="#contact-form">Искам да науча повече</a>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="content-grid">
+        <div class="video-column">
+          <p class="sound-prompt">🔈 Пусни звука и гледай видеото, за да научиш повече за технологията, с която работят уредите...</p>
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/iceFGOF-6Kc?rel=0"
+              title="PEMF: Документалната история"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <p class="video-note">Кликни два пъти на видеото, за да гледаш на цял екран.</p>
+        </div>
+
+        <aside class="benefits" aria-labelledby="benefits-title">
+          <h2 id="benefits-title">Ето какво ще получиш:</h2>
+
+          <article class="benefit">
+            <span class="check" aria-hidden="true">✓</span>
+            <div>
+              <h3>Какво да продаваш.</h3>
+              <p>Не започваш от празен лист. Получаваш достъп до готово продуктово портфолио, официален дистрибуторски профил и възможност да печелиш от реални продажби.</p>
+            </div>
+          </article>
+
+          <article class="benefit">
+            <span class="check" aria-hidden="true">✓</span>
+            <div>
+              <h3>Как да го продаваш.</h3>
+              <p>Готова система за старт и развитие. От регистрация до реален старт само за 6 дни. С предизвикателството „Летящ старт в бизнеса“ получаваш конкретен план за всеки ден, готови материали и лични насоки, с които веднага да започнеш да представяш продуктите и да водиш първите си бизнес срещи.</p>
+            </div>
+          </article>
+
+          <article class="benefit">
+            <span class="check" aria-hidden="true">✓</span>
+            <div>
+              <h3>И човек до теб, докато го правиш.</h3>
+              <p>Лично менторство и екипна подкрепа. Няма да получиш само регистрационен линк. Ще работим заедно по план, ще получаваш обратна връзка и помощ при първите си реални действия.</p>
+            </div>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="lead-section" aria-labelledby="form-title">
+      <div class="lead-copy">
+        <p class="eyebrow">Направи първата стъпка</p>
+        <h2 id="form-title">Готов ли си да разбереш дали тази възможност е за теб?</h2>
+        <p>Остави своите данни и ще се свържа лично с теб, за да ти разкажа как можеш да започнеш.</p>
+      </div>
+
+      <form id="contact-form" class="lead-form" novalidate>
+        <div class="field">
+          <label for="name">Име</label>
+          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Твоето име">
+        </div>
+
+        <div class="field">
+          <label for="phone">Телефон</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+359 ...">
+        </div>
+
+        <div class="field">
+          <label for="email">Имейл</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="name@example.com">
+        </div>
+
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Уебсайт</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <label class="consent">
+          <input name="consent" type="checkbox" required>
+          <span>Съгласен/на съм предоставените данни да бъдат използвани за връзка с мен относно партньорската програма.</span>
+        </label>
+
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+        <button id="submit-button" class="submit-button" type="submit">Изпрати запитване</button>
+        <p class="privacy-note">Данните ти няма да бъдат предоставяни на трети лица.</p>
+      </form>
+    </section>
+  </main>
+
+  <div id="thank-you" class="thank-you" hidden>
+    <div class="thank-you-card">
+      <div class="thank-you-icon">✓</div>
+      <h2>Благодаря!</h2>
+      <p>Данните ти бяха изпратени успешно. Ще се свържа с теб възможно най-скоро.</p>
+      <button id="close-thank-you" type="button">Затвори</button>
+    </div>
+  </div>
+
+  <footer>© 2026 OlyNation България</footer>
+  <script src="script.js"></script>
+</body>
+</html>
