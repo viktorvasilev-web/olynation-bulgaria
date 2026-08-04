@@ -199,31 +199,31 @@ h1 {
   display: block;
   width: 100%;
   height: auto;
-  margin: 0 0 28px;
+  margin: 0 0 20px;
   border: 1px solid var(--line);
   border-radius: 14px;
   object-fit: cover;
   box-shadow: 0 14px 34px rgba(0, 0, 0, .24);
 }
 
-.benefit { display: grid; grid-template-columns: 28px 1fr; gap: 13px; }
-.benefit + .benefit { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--line); }
-.check { color: var(--green); font-size: 30px; font-weight: 900; line-height: 1; }
-.benefit h3 { margin: 0 0 8px; font-size: 22px; line-height: 1.25; }
-.benefit p { margin: 0; color: var(--muted); font-size: 15px; }
+.benefit { display: grid; grid-template-columns: 24px 1fr; gap: 10px; }
+.benefit + .benefit { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+.check { color: var(--green); font-size: 24px; font-weight: 900; line-height: 1; }
+.benefit h3 { margin: 0 0 6px; font-size: 18px; line-height: 1.22; }
+.benefit p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
 
 .bonuses {
   display: grid;
-  gap: 30px;
-  margin-top: 36px;
-  padding-top: 34px;
+  gap: 22px;
+  margin-top: 26px;
+  padding-top: 24px;
   border-top: 1px solid var(--line);
 }
 
 .bonus {
   display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
-  gap: 14px;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 10px;
   align-items: start;
 }
 
@@ -270,15 +270,16 @@ h1 {
   padding: 3px 7px;
   background: linear-gradient(135deg, var(--green-bright), var(--green));
   color: #031710;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.1;
 }
 
 .bonus-content p {
-  margin: 14px 0 0;
+  margin: 10px 0 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .bonus-image {
@@ -364,10 +365,10 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .sound-prompt { font-size: 13px; }
   .benefits { padding: 23px 19px; border-radius: 18px; }
   .benefit { grid-template-columns: 24px 1fr; }
-  .benefit h3 { font-size: 19px; }
+  .benefit h3 { font-size: 17px; }
   .bonus { grid-template-columns: 28px minmax(0, 1fr); gap: 10px; }
   .bonus-icon { width: 24px; height: 21px; }
-  .bonus-content h3 { font-size: 17px; }
+  .bonus-content h3 { font-size: 14px; }
   .lead-section { width: calc(100% - 28px); margin-bottom: 60px; padding: 28px 20px; border-radius: 20px; }
 }
 
