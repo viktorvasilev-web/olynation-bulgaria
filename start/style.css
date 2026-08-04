@@ -42,7 +42,7 @@ button, input { font: inherit; }
   min-height: auto;
   display: grid;
   place-items: center;
-  padding: 16px 24px 20px;
+  padding: 16px 24px 40px;
   background:
     radial-gradient(circle at 50% 15%, rgba(70, 206, 139, .11), transparent 34%),
     linear-gradient(180deg, #031711 0%, var(--bg) 100%);
@@ -142,7 +142,7 @@ h1 {
 .submit-button:hover { transform: translateY(-2px); filter: brightness(1.08); }
 
 .content-section {
-  padding: 0 24px 90px;
+  padding: 10px 24px 90px;
   background: var(--bg);
 }
 
@@ -271,7 +271,7 @@ h1 {
 footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
 
 @media (max-width: 900px) {
-  .hero { min-height: auto; padding: 16px 20px 20px; }
+  .hero { min-height: auto; padding: 16px 20px 32px; }
   .content-grid, .lead-section { grid-template-columns: 1fr; }
   .content-grid { gap: 28px; }
   .lead-section { gap: 34px; padding: 38px; }
