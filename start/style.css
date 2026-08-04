@@ -161,8 +161,8 @@ h1 {
   margin: 0 0 18px;
   color: #dce9e4;
   text-align: center;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .video-frame {
@@ -282,7 +282,7 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .product-logo { width: 100px; height: 100px; }
   .hero-description { font-size: 15px; }
   .content-section { padding: 10px 14px 60px; }
-  .sound-prompt { font-size: 14px; }
+  .sound-prompt { font-size: 13px; }
   .benefits { padding: 23px 19px; border-radius: 18px; }
   .benefit { grid-template-columns: 24px 1fr; }
   .benefit h3 { font-size: 19px; }
