@@ -110,7 +110,7 @@ h1 {
 .hero-statement {
   margin: 30px auto 0;
   color: var(--green);
-  font-size: clamp(25px, 4vw, 48px);
+  font-size: clamp(21px, 2.8vw, 36px);
   font-weight: 900;
   line-height: 1.12;
 }
