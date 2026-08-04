@@ -212,6 +212,53 @@ h1 {
 .benefit h3 { margin: 0 0 8px; font-size: 22px; line-height: 1.25; }
 .benefit p { margin: 0; color: var(--muted); font-size: 15px; }
 
+.bonuses {
+  display: grid;
+  gap: 30px;
+  margin-top: 36px;
+  padding-top: 34px;
+  border-top: 1px solid var(--line);
+}
+
+.bonus {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.bonus-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.bonus-content h3 {
+  display: inline-block;
+  margin: 0;
+  padding: 3px 7px;
+  background: #2d9ed7;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.bonus-content p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.bonus-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
+}
+
 .lead-section {
   display: grid;
   grid-template-columns: .9fr 1.1fr;
@@ -286,6 +333,9 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .benefits { padding: 23px 19px; border-radius: 18px; }
   .benefit { grid-template-columns: 24px 1fr; }
   .benefit h3 { font-size: 19px; }
+  .bonus { grid-template-columns: 28px minmax(0, 1fr); gap: 10px; }
+  .bonus-icon { font-size: 23px; }
+  .bonus-content h3 { font-size: 17px; }
   .lead-section { width: calc(100% - 28px); margin-bottom: 60px; padding: 28px 20px; border-radius: 20px; }
 }
 
