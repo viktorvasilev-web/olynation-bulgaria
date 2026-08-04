@@ -193,7 +193,7 @@ h1 {
   box-shadow: var(--shadow);
 }
 
-.benefits h2 { margin: 0 0 28px; font-size: clamp(24px, 3vw, 34px); }
+.benefits h2 { margin: 0 0 22px; font-size: clamp(18px, 2vw, 22px); }
 
 .benefit { display: grid; grid-template-columns: 28px 1fr; gap: 13px; }
 .benefit + .benefit { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--line); }
