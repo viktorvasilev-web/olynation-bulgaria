@@ -42,7 +42,7 @@ button, input { font: inherit; }
   min-height: 720px;
   display: grid;
   place-items: center;
-  padding: 70px 24px 90px;
+  padding: 30px 24px 90px;
   background:
     radial-gradient(circle at 50% 15%, rgba(70, 206, 139, .11), transparent 34%),
     linear-gradient(180deg, #031711 0%, var(--bg) 100%);
@@ -261,7 +261,7 @@ h1 {
 footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
 
 @media (max-width: 900px) {
-  .hero { min-height: auto; padding: 58px 20px 72px; }
+  .hero { min-height: auto; padding: 28px 20px 72px; }
   .content-grid, .lead-section { grid-template-columns: 1fr; }
   .content-grid { gap: 28px; }
   .lead-section { gap: 34px; padding: 38px; }
