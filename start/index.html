@@ -185,47 +185,66 @@
               </div>
             </article>
           </div>
+
+          <section class="quiz-card" aria-labelledby="quiz-title">
+            <div class="quiz-progress" aria-live="polite">
+              <span id="quiz-counter">1 от 2</span>
+              <div class="quiz-progress-track" aria-hidden="true"><span id="quiz-progress-bar"></span></div>
+            </div>
+
+            <form id="contact-form" class="lead-form" novalidate>
+              <div id="quiz-step-1" class="quiz-step">
+                <h2 id="quiz-title">Направи запитване за:</h2>
+                <div class="quiz-options">
+                  <label class="quiz-option">
+                    <input name="interest" type="radio" value="Безплатно тестване на уредите" required>
+                    <span class="quiz-radio" aria-hidden="true"></span>
+                    <strong>Заяви безплатно тестване на уредите</strong>
+                  </label>
+                  <label class="quiz-option">
+                    <input name="interest" type="radio" value="Повече информация за партньорската програма" required>
+                    <span class="quiz-radio" aria-hidden="true"></span>
+                    <strong>Повече информация за партньорската програма</strong>
+                  </label>
+                </div>
+                <p id="quiz-message" class="form-message" role="status" aria-live="polite"></p>
+                <button id="quiz-next" class="submit-button quiz-next" type="button">Продължи <span aria-hidden="true">→</span></button>
+              </div>
+
+              <div id="quiz-step-2" class="quiz-step" hidden>
+                <h2>Остави данни за връзка</h2>
+                <p class="quiz-description">Ще се свържа лично с теб възможно най-скоро.</p>
+                <div class="field">
+                  <label for="name">Име</label>
+                  <input id="name" name="name" type="text" autocomplete="name" required placeholder="Твоето име">
+                </div>
+                <div class="field">
+                  <label for="phone">Телефон</label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+359 ...">
+                </div>
+                <div class="field">
+                  <label for="email">Имейл</label>
+                  <input id="email" name="email" type="email" autocomplete="email" required placeholder="name@example.com">
+                </div>
+                <div class="honeypot" aria-hidden="true">
+                  <label for="website">Уебсайт</label>
+                  <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+                <label class="consent">
+                  <input name="consent" type="checkbox" required>
+                  <span>Съгласен/на съм предоставените данни да бъдат използвани за връзка с мен относно моето запитване.</span>
+                </label>
+                <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+                <div class="quiz-actions">
+                  <button id="quiz-back" class="quiz-back" type="button">← Назад</button>
+                  <button id="submit-button" class="submit-button" type="submit">Изпрати запитване</button>
+                </div>
+                <p class="privacy-note">Данните ти няма да бъдат предоставяни на трети лица.</p>
+              </div>
+            </form>
+          </section>
         </aside>
       </div>
-    </section>
-
-    <section class="lead-section" aria-labelledby="form-title">
-      <div class="lead-copy">
-        <p class="eyebrow">Направи първата стъпка</p>
-        <h2 id="form-title">Готов ли си да разбереш дали тази възможност е за теб?</h2>
-        <p>Остави своите данни и ще се свържа лично с теб, за да ти разкажа как можеш да започнеш.</p>
-      </div>
-
-      <form id="contact-form" class="lead-form" novalidate>
-        <div class="field">
-          <label for="name">Име</label>
-          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Твоето име">
-        </div>
-
-        <div class="field">
-          <label for="phone">Телефон</label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+359 ...">
-        </div>
-
-        <div class="field">
-          <label for="email">Имейл</label>
-          <input id="email" name="email" type="email" autocomplete="email" required placeholder="name@example.com">
-        </div>
-
-        <div class="honeypot" aria-hidden="true">
-          <label for="website">Уебсайт</label>
-          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
-        </div>
-
-        <label class="consent">
-          <input name="consent" type="checkbox" required>
-          <span>Съгласен/на съм предоставените данни да бъдат използвани за връзка с мен относно партньорската програма.</span>
-        </label>
-
-        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
-        <button id="submit-button" class="submit-button" type="submit">Изпрати запитване</button>
-        <p class="privacy-note">Данните ти няма да бъдат предоставяни на трети лица.</p>
-      </form>
     </section>
   </main>
 
