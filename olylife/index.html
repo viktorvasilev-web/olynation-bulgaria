@@ -34,18 +34,34 @@
   <div class="announcement">Грижа за себе си от ново поколение</div>
 
   <main>
-    <section class="hero" aria-labelledby="page-title">
-      <div class="hero-glow hero-glow-one"></div>
-      <div class="hero-glow hero-glow-two"></div>
+    <section class="company-hero" aria-labelledby="page-title">
+      <h1 id="page-title" class="sr-only">Компания OlyLife чупи рекорди в Азия</h1>
 
-      <div class="hero-inner">
-        <p class="eyebrow">OLYLIFE</p>
-        <img class="product-logo" src="p90-logo.webp" alt="P90 PEMF продукт" decoding="async" fetchpriority="high">
+      <div class="company-slider" data-company-slider aria-roledescription="carousel" aria-label="OlyLife в Азия">
+        <div class="company-slides" aria-live="off">
+          <figure class="company-slide is-active" data-company-slide aria-hidden="false">
+            <img src="olylife-hero-asia.webp" alt="OlyLife в Азия – международно развитие и модерни офиси" decoding="async" fetchpriority="high">
+          </figure>
+          <figure class="company-slide" data-company-slide aria-hidden="true">
+            <img src="olylife-hero-awards.webp" alt="OlyLife – международно признание и награди" loading="lazy" decoding="async">
+          </figure>
+          <figure class="company-slide" data-company-slide aria-hidden="true">
+            <img src="olylife-hero-leaders.webp" alt="OlyLife – международни лидери и бизнес общност" loading="lazy" decoding="async">
+          </figure>
+          <figure class="company-slide" data-company-slide aria-hidden="true">
+            <img src="olylife-hero-summit.webp" alt="OlyLife – международна бизнес конференция" loading="lazy" decoding="async">
+          </figure>
+        </div>
 
-        <h1 id="page-title">Компания само на 3 години и половина чупи рекорди</h1>
-        <p class="hero-statement">Компания <span>OLYLIFE</span><br>чупи рекорди в Азия!</p>
-        <p class="hero-description">Разгледай историята, развитието и технологиите на една от най-бързо развиващите се wellness компании в Азия.</p>
+        <button class="company-slider-arrow company-slider-prev" type="button" data-company-prev aria-label="Предишен банер">&#8249;</button>
+        <button class="company-slider-arrow company-slider-next" type="button" data-company-next aria-label="Следващ банер">&#8250;</button>
 
+        <div class="company-slider-dots" aria-label="Избор на банер">
+          <button class="is-active" type="button" data-company-dot="0" aria-label="Банер 1" aria-current="true"></button>
+          <button type="button" data-company-dot="1" aria-label="Банер 2"></button>
+          <button type="button" data-company-dot="2" aria-label="Банер 3"></button>
+          <button type="button" data-company-dot="3" aria-label="Банер 4"></button>
+        </div>
       </div>
     </section>
 

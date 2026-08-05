@@ -23,6 +23,80 @@ const currentPath = window.location.pathname.replace(/\/+$/, '').toLowerCase();
 const activePartner = PARTNER_PROFILES[currentPath] || null;
 const partnerCode = activePartner ? activePartner.code : 'viktor';
 
+document.querySelectorAll('[data-company-slider]').forEach(slider => {
+  const slides = [...slider.querySelectorAll('[data-company-slide]')];
+  const dots = [...slider.querySelectorAll('[data-company-dot]')];
+  const previousButton = slider.querySelector('[data-company-prev]');
+  const nextButton = slider.querySelector('[data-company-next]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let activeIndex = 0;
+  let timer = null;
+  let touchStartX = 0;
+
+  function showCompanySlide(index) {
+    activeIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      const isActive = slideIndex === activeIndex;
+      slide.classList.toggle('is-active', isActive);
+      slide.setAttribute('aria-hidden', String(!isActive));
+    });
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === activeIndex;
+      dot.classList.toggle('is-active', isActive);
+      if (isActive) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+  }
+
+  function stopCompanySlider() {
+    window.clearInterval(timer);
+    timer = null;
+  }
+
+  function startCompanySlider() {
+    stopCompanySlider();
+    if (!reducedMotion) {
+      timer = window.setInterval(() => showCompanySlide(activeIndex + 1), 5500);
+    }
+  }
+
+  previousButton.addEventListener('click', () => {
+    showCompanySlide(activeIndex - 1);
+    startCompanySlider();
+  });
+  nextButton.addEventListener('click', () => {
+    showCompanySlide(activeIndex + 1);
+    startCompanySlider();
+  });
+  dots.forEach(dot => dot.addEventListener('click', () => {
+    showCompanySlide(Number(dot.dataset.companyDot));
+    startCompanySlider();
+  }));
+
+  slider.addEventListener('mouseenter', stopCompanySlider);
+  slider.addEventListener('mouseleave', startCompanySlider);
+  slider.addEventListener('focusin', stopCompanySlider);
+  slider.addEventListener('focusout', event => {
+    if (!slider.contains(event.relatedTarget)) startCompanySlider();
+  });
+  slider.addEventListener('touchstart', event => {
+    touchStartX = event.changedTouches[0].clientX;
+    stopCompanySlider();
+  }, { passive: true });
+  slider.addEventListener('touchend', event => {
+    const distance = event.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(distance) > 45) showCompanySlide(activeIndex + (distance < 0 ? 1 : -1));
+    startCompanySlider();
+  }, { passive: true });
+  slider.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') previousButton.click();
+    if (event.key === 'ArrowRight') nextButton.click();
+  });
+
+  showCompanySlide(0);
+  startCompanySlider();
+});
+
 document.querySelectorAll('form').forEach(form => {
   const partnerField = document.createElement('input');
   partnerField.type = 'hidden';
