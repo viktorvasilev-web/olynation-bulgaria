@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/georgiochkov",
-      "destination": "/start/index.html"
+      "destination": "/georgiochkov/index.html"
     },
     {
       "source": "/georgiochkov/",
-      "destination": "/start/index.html"
+      "destination": "/georgiochkov/index.html"
     }
   ]
 }
