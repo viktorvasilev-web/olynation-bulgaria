@@ -1,7 +1,6 @@
 const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbykZyGaWdLvG5A2b0si3fjSkng9I84b0nLLsWo9jzF0mtU_w8im2MftD7aJNR_4CNShIg/exec';
 
 const form = document.getElementById('contact-form');
-const submitButton = document.getElementById('submit-button');
 const formMessage = document.getElementById('form-message');
 const thankYou = document.getElementById('thank-you');
 const closeThankYou = document.getElementById('close-thank-you');
@@ -38,7 +37,7 @@ quizNext.addEventListener('click', () => {
 
 quizBack.addEventListener('click', () => showQuizStep(1));
 
-form.addEventListener('submit', async event => {
+form.addEventListener('submit', event => {
   event.preventDefault();
   setFormMessage('');
 
@@ -51,29 +50,14 @@ form.addEventListener('submit', async event => {
     return;
   }
 
-  submitButton.disabled = true;
-  submitButton.textContent = 'Изпращане...';
+  form.action = FORM_ENDPOINT;
+  document.getElementById('form-source').value = window.location.href;
+  HTMLFormElement.prototype.submit.call(form);
 
-  try {
-    const data = new FormData(form);
-    data.append('source', window.location.href);
-
-    await fetch(FORM_ENDPOINT, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: data,
-    });
-
-    form.reset();
-    showQuizStep(1);
-    thankYou.hidden = false;
-    document.body.style.overflow = 'hidden';
-  } catch (error) {
-    setFormMessage('Възникна проблем при изпращането. Моля, опитай отново.');
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = 'Изпрати запитване';
-  }
+  form.reset();
+  showQuizStep(1);
+  thankYou.hidden = false;
+  document.body.style.overflow = 'hidden';
 });
 
 function hideThankYou() {

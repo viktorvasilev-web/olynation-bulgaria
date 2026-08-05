@@ -202,7 +202,8 @@
               <div class="quiz-progress-track" aria-hidden="true"><span id="quiz-progress-bar"></span></div>
             </div>
 
-            <form id="contact-form" class="lead-form" novalidate>
+            <form id="contact-form" class="lead-form" method="post" target="form-submit-frame" novalidate>
+              <input id="form-source" name="source" type="hidden">
               <div id="quiz-step-1" class="quiz-step">
                 <div class="quiz-options">
                   <label class="quiz-option">
@@ -251,6 +252,7 @@
                 <p class="privacy-note">Данните ти няма да бъдат предоставяни на трети лица.</p>
               </div>
             </form>
+            <iframe class="form-submit-frame" name="form-submit-frame" title="Изпращане на формата"></iframe>
           </section>
         </aside>
       </div>
