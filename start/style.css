@@ -209,6 +209,8 @@ h1 {
   background: #071c16;
 }
 .story-grid img { display: block; width: 100%; height: auto; }
+.story-grid .story-compact { padding: 6px; }
+.story-grid .story-compact img { height: 190px; object-fit: contain; }
 .story-disclaimer { margin: 5px 0 0; color: var(--muted); text-align: center; font-size: 9px; line-height: 1.45; }
 
 .product-catalog {
@@ -590,6 +592,7 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .story-gallery { margin-top: 24px; padding: 14px; border-radius: 17px; }
   .story-grid { column-gap: 8px; }
   .story-grid figure { margin-bottom: 8px; border-radius: 10px; }
+  .story-grid .story-compact img { height: 135px; }
   .product-catalog { margin-top: 24px; padding: 14px; border-radius: 17px; }
   .product-catalog-wide { width: calc(100% - 28px); margin-top: 0; margin-bottom: 28px; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
