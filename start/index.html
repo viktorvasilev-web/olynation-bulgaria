@@ -237,7 +237,7 @@
           <section class="side-stories" aria-label="Допълнителни истории от потребители">
             <figure><img src="story-05.jpeg" alt="Споделена информация за преживяване с продукт" loading="lazy"></figure>
             <figure><img src="story-06.jpeg" alt="Споделена история преди и след сесия" loading="lazy"></figure>
-            <a class="order-cta" href="#contact-form">Направи поръчка оттук <span aria-hidden="true">→</span></a>
+            <a class="order-cta" href="#order-form" data-open-order>Направи поръчка оттук <span aria-hidden="true">→</span></a>
           </section>
 
         </aside>
@@ -337,9 +337,67 @@
         <article class="product-card"><div class="product-card-image"><img src="product-vitality-wand.webp" alt="OlyLife Vitality Wand" loading="lazy"></div><div class="product-card-copy"><h3>Vitality Wand</h3><p class="product-card-price"><span>USD</span> 600*</p><p class="product-card-note">*10% такси, мито и доставка.</p></div></article>
         <article class="product-card"><div class="product-card-image"><img src="product-a9-smart-anion-bamaair.webp" alt="OlyLife A9 Smart Anion BamaAir" loading="lazy"></div><div class="product-card-copy"><h3>A9 Smart Anion BamaAir</h3><p class="product-card-price"><span>USD</span> 500*</p><p class="product-card-note">*10% такси, мито и доставка.</p></div></article>
       </div>
-      <a class="order-cta order-cta-bottom" href="#contact-form">Направи поръчка оттук <span aria-hidden="true">→</span></a>
+      <a class="order-cta order-cta-bottom" href="#order-form" data-open-order>Направи поръчка оттук <span aria-hidden="true">→</span></a>
     </section>
   </main>
+
+  <div id="order-modal" class="order-modal" hidden>
+    <section class="order-dialog" role="dialog" aria-modal="true" aria-labelledby="order-title">
+      <button id="close-order" class="order-close" type="button" aria-label="Затвори формата">×</button>
+      <p class="eyebrow">Заявка за покупка</p>
+      <h2 id="order-title">Направи поръчка</h2>
+      <p class="order-intro">Избери уред и остави данните си. Ще се свържа с теб за потвърждение и следващите стъпки.</p>
+
+      <form id="order-form" class="order-form" method="post" target="form-submit-frame" novalidate>
+        <input name="source" type="hidden">
+        <div class="honeypot" aria-hidden="true"><label for="order-website">Уебсайт</label><input id="order-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+
+        <div class="order-field order-field-wide">
+          <label for="order-product">Продукт</label>
+          <select id="order-product" name="product" required>
+            <option value="">Избери продукт</option>
+            <option>THZ Tera-P90+ — USD 1,500*</option>
+            <option>THZ Tera-P90 — USD 1,000*</option>
+            <option>Galaxy G-One — USD 500*</option>
+            <option>Shaken Massager — USD 1,000*</option>
+            <option>Vitality Wand — USD 600*</option>
+            <option>A9 Smart Anion BamaAir — USD 500*</option>
+          </select>
+        </div>
+        <div class="order-field">
+          <label for="order-quantity">Количество</label>
+          <input id="order-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="20" value="1" required>
+        </div>
+        <div class="order-field">
+          <label for="order-name">Име и фамилия</label>
+          <input id="order-name" name="name" type="text" autocomplete="name" placeholder="Твоето име" required>
+        </div>
+        <div class="order-field">
+          <label for="order-phone">Телефон</label>
+          <input id="order-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" pattern="[0-9]{7,15}" placeholder="0888123456" title="Въведи между 7 и 15 цифри." required>
+        </div>
+        <div class="order-field">
+          <label for="order-email">Имейл</label>
+          <input id="order-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+        </div>
+        <div class="order-field">
+          <label for="order-city">Град</label>
+          <input id="order-city" name="city" type="text" autocomplete="address-level2" placeholder="София" required>
+        </div>
+        <div class="order-field order-field-wide">
+          <label for="order-address">Адрес за доставка</label>
+          <input id="order-address" name="address" type="text" autocomplete="street-address" placeholder="Улица, номер, вход и апартамент" required>
+        </div>
+        <label class="consent order-consent">
+          <input name="consent" type="checkbox" required>
+          <span>Съгласен/на съм данните да бъдат използвани за връзка с мен и обработване на заявката.</span>
+        </label>
+        <p class="order-message" role="status" aria-live="polite"></p>
+        <button class="submit-button order-submit" type="submit">Изпрати заявката <span aria-hidden="true">→</span></button>
+        <p class="order-footnote">*Към цената се добавят 10% такси, мито и доставка. Плащане не се извършва през сайта.</p>
+      </form>
+    </section>
+  </div>
 
   <div id="thank-you" class="thank-you" hidden>
     <div class="thank-you-card">

@@ -2,6 +2,10 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbykZyGaWdLvG5A2b0
 
 const thankYou = document.getElementById('thank-you');
 const closeThankYou = document.getElementById('close-thank-you');
+const thankYouMessage = thankYou.querySelector('p');
+const orderModal = document.getElementById('order-modal');
+const orderForm = document.getElementById('order-form');
+const closeOrder = document.getElementById('close-order');
 
 document.querySelectorAll('.contact-quiz').forEach(quiz => {
   const form = quiz.querySelector('form');
@@ -52,9 +56,56 @@ document.querySelectorAll('.contact-quiz').forEach(quiz => {
 
     form.reset();
     showQuizStep(1);
+    thankYouMessage.textContent = 'Данните ти бяха изпратени успешно. Ще се свържа с теб възможно най-скоро.';
     thankYou.hidden = false;
     document.body.style.overflow = 'hidden';
   });
+});
+
+function openOrderForm(event) {
+  event.preventDefault();
+  orderModal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  window.setTimeout(() => orderForm.elements.product.focus(), 0);
+}
+
+function hideOrderForm() {
+  orderModal.hidden = true;
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('[data-open-order]').forEach(button => {
+  button.addEventListener('click', openOrderForm);
+});
+
+closeOrder.addEventListener('click', hideOrderForm);
+orderModal.addEventListener('click', event => {
+  if (event.target === orderModal) hideOrderForm();
+});
+
+orderForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const message = orderForm.querySelector('.order-message');
+  message.textContent = '';
+
+  if (!orderForm.reportValidity()) return;
+  if (orderForm.elements.website.value) return;
+
+  const product = orderForm.elements.product.value;
+  const quantity = orderForm.elements.quantity.value;
+  const city = orderForm.elements.city.value.trim();
+  const address = orderForm.elements.address.value.trim();
+
+  orderForm.action = FORM_ENDPOINT;
+  orderForm.elements.source.value = `ПОРЪЧКА | Продукт: ${product} | Количество: ${quantity} | Град: ${city} | Адрес: ${address} | Страница: ${window.location.href}`;
+  HTMLFormElement.prototype.submit.call(orderForm);
+
+  orderForm.reset();
+  orderForm.elements.quantity.value = '1';
+  hideOrderForm();
+  thankYouMessage.textContent = 'Заявката ти за поръчка беше изпратена успешно. Ще се свържа с теб за потвърждение и следващите стъпки.';
+  thankYou.hidden = false;
+  document.body.style.overflow = 'hidden';
 });
 
 function hideThankYou() {
@@ -68,5 +119,7 @@ thankYou.addEventListener('click', event => {
 });
 
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && !thankYou.hidden) hideThankYou();
+  if (event.key !== 'Escape') return;
+  if (!orderModal.hidden) hideOrderForm();
+  else if (!thankYou.hidden) hideThankYou();
 });
