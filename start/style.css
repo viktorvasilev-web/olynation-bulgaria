@@ -176,7 +176,25 @@ h1 {
 }
 
 .video-frame iframe,
-.video-frame mux-player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-frame mux-player,
+.video-frame .lazy-mux-player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+.lazy-mux-player {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 0;
+  color: #fff;
+  border: 0;
+  background: radial-gradient(circle at 50% 35%, #154b3b, #020d0a 72%);
+  cursor: pointer;
+}
+
+.lazy-mux-player img { width: 100%; height: 100%; object-fit: cover; }
+.lazy-mux-title { max-width: 80%; padding: 20px; text-align: center; font-weight: 700; }
+.lazy-mux-play { position: absolute; display: grid; place-items: center; width: 64px; height: 64px; padding-left: 4px; border-radius: 50%; color: #071a14; background: linear-gradient(135deg, var(--lime), var(--green)); box-shadow: 0 12px 34px rgba(0, 0, 0, .45); font-size: 25px; }
+.lazy-mux-player.is-loading .lazy-mux-play { animation: muxPulse 1s ease-in-out infinite alternate; }
+@keyframes muxPulse { to { transform: scale(.9); opacity: .6; } }
 .secondary-video { margin-top: 22px; }
 
 .video-note {
@@ -372,7 +390,8 @@ h1 {
 .testimonials > h2 { margin: 0 0 18px; text-align: center; font-size: 21px; }
 .testimonial-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; justify-items: center; }
 .testimonial-video { position: relative; overflow: hidden; width: min(100%, 270px); aspect-ratio: 9 / 16; border: 1px solid rgba(100, 221, 154, .3); border-radius: 16px; background: #020d0a; box-shadow: 0 14px 32px rgba(0, 0, 0, .28); }
-.testimonial-video mux-player { position: absolute; inset: 0; width: 100%; height: 100%; }
+.testimonial-video mux-player,
+.testimonial-video .lazy-mux-player { position: absolute; inset: 0; width: 100%; height: 100%; }
 
 .benefits {
   padding: 30px;
@@ -642,7 +661,8 @@ h1 {
 .international-videos-note { max-width: 650px; margin: 10px auto 25px; color: var(--muted); text-align: center; font-size: 13px; }
 .international-video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .international-video-card { position: relative; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid rgba(100, 221, 154, .3); border-radius: 17px; background: #020d0a; box-shadow: 0 14px 32px rgba(0, 0, 0, .28); }
-.international-video-card mux-player { position: absolute; inset: 0; width: 100%; height: 100%; }
+.international-video-card mux-player,
+.international-video-card .lazy-mux-player { position: absolute; inset: 0; width: 100%; height: 100%; }
 
 .thank-you {
   position: fixed;

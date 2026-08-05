@@ -1,4 +1,61 @@
 const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbykZyGaWdLvG5A2b0si3fjSkng9I84b0nLLsWo9jzF0mtU_w8im2MftD7aJNR_4CNShIg/exec';
+const MUX_PLAYER_SCRIPT = 'https://cdn.jsdelivr.net/npm/@mux/mux-player';
+
+let muxPlayerReady;
+
+function loadMuxPlayer() {
+  if (muxPlayerReady) return muxPlayerReady;
+
+  muxPlayerReady = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = MUX_PLAYER_SCRIPT;
+    script.onload = () => customElements.whenDefined('mux-player').then(resolve);
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+
+  return muxPlayerReady;
+}
+
+function setupLazyMuxPlayers() {
+  document.querySelectorAll('mux-player').forEach(originalPlayer => {
+    const attributes = Array.from(originalPlayer.attributes).map(attribute => [attribute.name, attribute.value]);
+    const title = originalPlayer.getAttribute('metadata-video-title') || 'Видео';
+    const poster = originalPlayer.getAttribute('poster');
+    const placeholder = document.createElement('button');
+
+    placeholder.type = 'button';
+    placeholder.className = 'lazy-mux-player';
+    placeholder.setAttribute('aria-label', `Пусни: ${title}`);
+    placeholder.innerHTML = poster
+      ? `<img src="${poster}" alt="" decoding="async"><span class="lazy-mux-play" aria-hidden="true">▶</span>`
+      : `<span class="lazy-mux-title">${title}</span><span class="lazy-mux-play" aria-hidden="true">▶</span>`;
+
+    let activated = false;
+    placeholder.activatePlayer = async () => {
+      if (activated) return;
+      activated = true;
+      placeholder.classList.add('is-loading');
+
+      try {
+        await loadMuxPlayer();
+        const player = document.createElement('mux-player');
+        attributes.forEach(([name, value]) => player.setAttribute(name, value));
+        player.setAttribute('preload', 'metadata');
+        placeholder.replaceWith(player);
+      } catch (error) {
+        activated = false;
+        placeholder.classList.remove('is-loading');
+        console.error('Mux player failed to load:', error);
+      }
+    };
+
+    placeholder.addEventListener('click', placeholder.activatePlayer);
+    originalPlayer.replaceWith(placeholder);
+  });
+}
+
+setupLazyMuxPlayers();
 
 const thankYou = document.getElementById('thank-you');
 const closeThankYou = document.getElementById('close-thank-you');
@@ -15,7 +72,7 @@ const PARTNER_PROFILES = {
     code: 'georgiochkov',
     name: 'Георги Очков',
     firstName: 'Георги',
-    photo: 'georgi-ochkov-portrait.png'
+    photo: 'georgi-ochkov-portrait.webp'
   }
 };
 
