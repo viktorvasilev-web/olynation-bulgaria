@@ -253,6 +253,21 @@ h1 {
 .product-details strong { color: #eef8f4; font-size: 11px; line-height: 1.35; text-transform: uppercase; }
 .product-details span { margin-top: 4px; color: var(--muted); font-size: 9px; line-height: 1.45; }
 
+.testimonials {
+  margin-top: 26px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(10, 43, 35, .97), rgba(3, 24, 19, .97));
+  box-shadow: var(--shadow);
+}
+
+.testimonials > .eyebrow { margin-bottom: 5px; text-align: center; font-size: 10px; }
+.testimonials > h2 { margin: 0 0 18px; text-align: center; font-size: 21px; }
+.testimonial-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; justify-items: center; }
+.testimonial-video { position: relative; overflow: hidden; width: min(100%, 270px); aspect-ratio: 9 / 16; border: 1px solid rgba(100, 221, 154, .3); border-radius: 16px; background: #020d0a; box-shadow: 0 14px 32px rgba(0, 0, 0, .28); }
+.testimonial-video mux-player { position: absolute; inset: 0; width: 100%; height: 100%; }
+
 .benefits {
   padding: 30px;
   border: 2px solid var(--green);
@@ -501,6 +516,9 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .product-details ul { grid-template-columns: 1fr; }
   .product-details strong { font-size: 12px; }
   .product-details span { font-size: 10px; }
+  .testimonials { margin-top: 20px; padding: 18px 14px; border-radius: 17px; }
+  .testimonial-grid { grid-template-columns: 1fr; gap: 18px; }
+  .testimonial-video { width: min(100%, 300px); }
   .benefits { padding: 23px 19px; border-radius: 18px; }
   .benefit { grid-template-columns: 24px 1fr; }
   .benefit h3 { font-size: 17px; }
