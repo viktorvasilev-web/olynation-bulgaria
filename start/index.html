@@ -368,9 +368,9 @@
           <label for="order-quantity">Количество</label>
           <input id="order-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="20" value="1" required>
         </div>
-        <div class="order-field">
-          <label for="order-name">Име и фамилия</label>
-          <input id="order-name" name="name" type="text" autocomplete="name" placeholder="Твоето име" required>
+        <div class="order-field order-field-wide">
+          <label for="order-name">Три имена</label>
+          <input id="order-name" name="name" type="text" autocomplete="name" pattern="\S+\s+\S+\s+\S+.*" placeholder="Име, презиме и фамилия" title="Моля, въведи и трите имена." required>
         </div>
         <div class="order-field">
           <label for="order-phone">Телефон</label>
@@ -381,16 +381,24 @@
           <input id="order-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
         </div>
         <div class="order-field">
-          <label for="order-city">Град</label>
-          <input id="order-city" name="city" type="text" autocomplete="address-level2" placeholder="София" required>
+          <label for="order-id-number">Номер на лична карта</label>
+          <input id="order-id-number" name="id_number" type="text" inputmode="numeric" pattern="[0-9]{6,20}" maxlength="20" placeholder="123456789" title="Въведи номера само с цифри." required>
         </div>
         <div class="order-field order-field-wide">
-          <label for="order-address">Адрес за доставка</label>
-          <input id="order-address" name="address" type="text" autocomplete="street-address" placeholder="Улица, номер, вход и апартамент" required>
+          <label for="order-registered-address">Постоянен адрес по лична карта</label>
+          <input id="order-registered-address" name="registered_address" type="text" autocomplete="street-address" placeholder="Град, пощенски код, улица, номер, вход и апартамент" required>
+        </div>
+        <label class="same-address order-field-wide">
+          <input id="same-delivery-address" type="checkbox">
+          <span>Адресът за доставка е същият като постоянния адрес</span>
+        </label>
+        <div class="order-field order-field-wide">
+          <label for="order-delivery-address">Адрес за доставка</label>
+          <input id="order-delivery-address" name="delivery_address" type="text" autocomplete="shipping street-address" placeholder="Град, пощенски код, улица, номер, вход и апартамент" required>
         </div>
         <label class="consent order-consent">
           <input name="consent" type="checkbox" required>
-          <span>Съгласен/на съм данните да бъдат използвани за връзка с мен и обработване на заявката.</span>
+          <span>Съгласен/на съм предоставените лични данни да бъдат използвани за регистрацията, връзка с мен и обработване на заявката.</span>
         </label>
         <p class="order-message" role="status" aria-live="polite"></p>
         <button class="submit-button order-submit" type="submit">Изпрати заявката <span aria-hidden="true">→</span></button>

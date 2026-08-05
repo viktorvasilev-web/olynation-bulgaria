@@ -297,6 +297,9 @@ h1 {
 .order-field select { color-scheme: dark; }
 .order-field input:focus, .order-field select:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(100, 221, 154, .12); }
 .order-field input::placeholder { color: #82978f; }
+.order-field input[readonly] { border-color: rgba(100, 221, 154, .34); background: rgba(100, 221, 154, .08); color: #cce9dc; }
+.same-address { display: flex; align-items: center; gap: 9px; margin: -2px 0 1px; color: #cfe1da; font-size: 10px; line-height: 1.35; cursor: pointer; }
+.same-address input { flex: 0 0 auto; width: 17px; height: 17px; accent-color: var(--green); }
 .order-consent { margin-top: 2px; }
 .order-message { min-height: 0; margin: 0; color: #ffb1a8; text-align: center; font-size: 11px; }
 .order-submit { width: 100%; min-height: 50px; border: 0; font-size: 14px; }

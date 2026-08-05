@@ -6,6 +6,9 @@ const thankYouMessage = thankYou.querySelector('p');
 const orderModal = document.getElementById('order-modal');
 const orderForm = document.getElementById('order-form');
 const closeOrder = document.getElementById('close-order');
+const sameDeliveryAddress = document.getElementById('same-delivery-address');
+const registeredAddress = document.getElementById('order-registered-address');
+const deliveryAddress = document.getElementById('order-delivery-address');
 
 document.querySelectorAll('.contact-quiz').forEach(quiz => {
   const form = quiz.querySelector('form');
@@ -83,6 +86,19 @@ orderModal.addEventListener('click', event => {
   if (event.target === orderModal) hideOrderForm();
 });
 
+function syncDeliveryAddress() {
+  if (!sameDeliveryAddress.checked) return;
+  deliveryAddress.value = registeredAddress.value;
+}
+
+sameDeliveryAddress.addEventListener('change', () => {
+  deliveryAddress.readOnly = sameDeliveryAddress.checked;
+  syncDeliveryAddress();
+  if (!sameDeliveryAddress.checked) deliveryAddress.focus();
+});
+
+registeredAddress.addEventListener('input', syncDeliveryAddress);
+
 orderForm.addEventListener('submit', event => {
   event.preventDefault();
   const message = orderForm.querySelector('.order-message');
@@ -93,15 +109,17 @@ orderForm.addEventListener('submit', event => {
 
   const product = orderForm.elements.product.value;
   const quantity = orderForm.elements.quantity.value;
-  const city = orderForm.elements.city.value.trim();
-  const address = orderForm.elements.address.value.trim();
+  const idNumber = orderForm.elements.id_number.value.trim();
+  const permanentAddress = orderForm.elements.registered_address.value.trim();
+  const shippingAddress = orderForm.elements.delivery_address.value.trim();
 
   orderForm.action = FORM_ENDPOINT;
-  orderForm.elements.source.value = `ПОРЪЧКА | Продукт: ${product} | Количество: ${quantity} | Град: ${city} | Адрес: ${address} | Страница: ${window.location.href}`;
+  orderForm.elements.source.value = `ПОРЪЧКА | Продукт: ${product} | Количество: ${quantity} | Лична карта №: ${idNumber} | Постоянен адрес: ${permanentAddress} | Адрес за доставка: ${shippingAddress} | Страница: ${window.location.href}`;
   HTMLFormElement.prototype.submit.call(orderForm);
 
   orderForm.reset();
   orderForm.elements.quantity.value = '1';
+  deliveryAddress.readOnly = false;
   hideOrderForm();
   thankYouMessage.textContent = 'Заявката ти за поръчка беше изпратена успешно. Ще се свържа с теб за потвърждение и следващите стъпки.';
   thankYou.hidden = false;
