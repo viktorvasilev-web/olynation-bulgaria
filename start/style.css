@@ -427,6 +427,28 @@ h1 {
 .quiz-card .privacy-note { margin: 4px 0 0; font-size: 9px; line-height: 1.4; }
 .quiz-card .form-message { min-height: 14px; font-size: 10px; }
 
+.wide-quiz {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto 90px;
+  padding: 38px clamp(28px, 6vw, 80px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(78, 225, 143, .1), transparent 38%),
+    linear-gradient(145deg, rgba(11, 46, 37, .98), rgba(3, 24, 19, .98));
+  box-shadow: var(--shadow);
+}
+
+.wide-quiz .quiz-progress { width: min(520px, 100%); margin-right: auto; margin-left: auto; }
+.wide-quiz .lead-form { width: min(820px, 100%); margin: 0 auto; }
+.wide-quiz-heading { text-align: center; }
+.wide-quiz-heading .eyebrow { margin-bottom: 5px; }
+.wide-quiz-heading h2 { margin: 0; font-size: clamp(25px, 4vw, 38px); }
+.wide-quiz .quiz-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.wide-quiz .quiz-option { min-height: 105px; padding: 20px; }
+.wide-quiz .quiz-next { width: min(420px, 100%); margin-right: auto; margin-left: auto; }
+.wide-quiz .quiz-step:nth-child(3) { width: min(620px, 100%); margin: 0 auto; }
+
 .lead-section {
   display: grid;
   grid-template-columns: .9fr 1.1fr;
@@ -544,6 +566,7 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .about-photo-wrap { min-height: 0; aspect-ratio: 4 / 5; }
   .about-photo-wrap img { object-position: center top; }
   .international-video-grid { grid-template-columns: 1fr; }
+  .wide-quiz .quiz-options { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
@@ -596,6 +619,9 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .international-videos-note { margin-bottom: 18px; font-size: 11px; }
   .international-video-grid { gap: 15px; }
   .international-video-card { border-radius: 13px; }
+  .wide-quiz { width: calc(100% - 28px); margin-bottom: 60px; padding: 24px 16px; border-radius: 20px; }
+  .wide-quiz .quiz-option { min-height: 78px; padding: 15px; }
+  .wide-quiz-heading h2 { font-size: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

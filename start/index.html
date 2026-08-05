@@ -217,7 +217,7 @@
             </article>
           </div>
 
-          <section class="quiz-card" aria-label="Форма за запитване">
+          <section class="quiz-card contact-quiz" aria-label="Форма за запитване">
             <div class="quiz-progress" aria-live="polite">
               <span id="quiz-counter">1 от 2</span>
               <div class="quiz-progress-track" aria-hidden="true"><span id="quiz-progress-bar"></span></div>
@@ -295,6 +295,52 @@
           <blockquote>„Попитай и ще ти бъде дадено. Потърси и ще намериш. Почукай и вратата ще ти бъде отворена.“</blockquote>
         </div>
       </div>
+    </section>
+
+    <section class="quiz-card wide-quiz contact-quiz" aria-label="Форма за запитване">
+      <div class="quiz-progress" aria-live="polite">
+        <span>1 от 2</span>
+        <div class="quiz-progress-track" aria-hidden="true"><span></span></div>
+      </div>
+      <form class="lead-form" method="post" target="form-submit-frame" novalidate>
+        <input name="source" type="hidden">
+        <div class="quiz-step">
+          <div class="wide-quiz-heading">
+            <p class="eyebrow">Направи следващата стъпка</p>
+            <h2>Как мога да ти помогна?</h2>
+          </div>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input name="interest" type="radio" value="Безплатно тестване на уредите в София" required>
+              <span class="quiz-radio" aria-hidden="true"></span>
+              <strong>Заяви безплатно тестване на уредите в София</strong>
+            </label>
+            <label class="quiz-option">
+              <input name="interest" type="radio" value="Повече информация за партньорската програма" required>
+              <span class="quiz-radio" aria-hidden="true"></span>
+              <strong>Повече информация за партньорската програма</strong>
+            </label>
+          </div>
+          <p class="form-message" role="status" aria-live="polite"></p>
+          <button class="submit-button quiz-next" type="button">Продължи <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="quiz-step" hidden>
+          <h2>Остави данни за връзка</h2>
+          <p class="quiz-description">Ще се свържа лично с теб възможно най-скоро.</p>
+          <div class="field"><label for="wide-name">Име</label><input id="wide-name" name="name" type="text" autocomplete="name" required placeholder="Твоето име"></div>
+          <div class="field">
+            <label for="wide-phone">Телефон</label>
+            <input id="wide-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required pattern="[0-9]{7,15}" placeholder="0888123456" title="Въведи между 7 и 15 цифри, без интервали и символи.">
+            <small class="field-hint">Въведи само цифри, без „+“ и интервали.</small>
+          </div>
+          <div class="field"><label for="wide-email">Имейл</label><input id="wide-email" name="email" type="email" autocomplete="email" required placeholder="name@example.com"></div>
+          <div class="honeypot" aria-hidden="true"><label for="wide-website">Уебсайт</label><input id="wide-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          <label class="consent"><input name="consent" type="checkbox" required><span>Съгласен/на съм предоставените данни да бъдат използвани за връзка с мен относно моето запитване.</span></label>
+          <p class="form-message" role="status" aria-live="polite"></p>
+          <div class="quiz-actions"><button class="quiz-back" type="button">← Назад</button><button class="submit-button" type="submit">Изпрати запитване</button></div>
+          <p class="privacy-note">Данните ти няма да бъдат предоставяни на трети лица.</p>
+        </div>
+      </form>
     </section>
 
     <section class="international-videos" aria-labelledby="international-videos-title">
