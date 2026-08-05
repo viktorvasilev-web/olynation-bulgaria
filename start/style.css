@@ -499,6 +499,23 @@ h1 {
 .about-copy strong { color: var(--green-bright); }
 .about-copy blockquote { margin: 22px 0 0; padding: 15px 18px; border-left: 3px solid var(--green); border-radius: 0 12px 12px 0; background: rgba(63, 194, 137, .08); color: #effaf5; font-size: 17px; font-weight: 700; }
 
+.international-videos {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto 90px;
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(11, 46, 37, .98), rgba(3, 24, 19, .98));
+  box-shadow: var(--shadow);
+}
+
+.international-videos > .eyebrow { margin-bottom: 5px; text-align: center; }
+.international-videos > h2 { margin: 0; text-align: center; font-size: clamp(27px, 4vw, 42px); }
+.international-videos-note { max-width: 650px; margin: 10px auto 25px; color: var(--muted); text-align: center; font-size: 13px; }
+.international-video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.international-video-card { position: relative; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid rgba(100, 221, 154, .3); border-radius: 17px; background: #020d0a; box-shadow: 0 14px 32px rgba(0, 0, 0, .28); }
+.international-video-card mux-player { position: absolute; inset: 0; width: 100%; height: 100%; }
+
 .thank-you {
   position: fixed;
   inset: 0;
@@ -526,6 +543,7 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .about-grid { grid-template-columns: 1fr; }
   .about-photo-wrap { min-height: 0; aspect-ratio: 4 / 5; }
   .about-photo-wrap img { object-position: center top; }
+  .international-video-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
@@ -573,6 +591,11 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .about-copy p { font-size: 13px; line-height: 1.65; }
   .about-copy p + p { margin-top: 12px; }
   .about-copy blockquote { margin-top: 17px; font-size: 14px; }
+  .international-videos { width: calc(100% - 28px); margin-bottom: 60px; padding: 20px 14px; border-radius: 20px; }
+  .international-videos > h2 { font-size: 27px; }
+  .international-videos-note { margin-bottom: 18px; font-size: 11px; }
+  .international-video-grid { gap: 15px; }
+  .international-video-card { border-radius: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
