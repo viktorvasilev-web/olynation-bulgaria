@@ -230,7 +230,8 @@
                 </div>
                 <div class="field">
                   <label for="phone">Телефон</label>
-                  <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+359 ...">
+                  <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required pattern="[0-9]{7,15}" placeholder="359..." title="Въведи между 7 и 15 цифри, без интервали и символи.">
+                  <small class="field-hint">Въведи само цифри.</small>
                 </div>
                 <div class="field">
                   <label for="email">Имейл</label>
