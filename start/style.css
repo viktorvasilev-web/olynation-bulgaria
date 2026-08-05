@@ -230,6 +230,28 @@ h1 {
 
 .side-stories img { display: block; width: 100%; height: auto; }
 
+.order-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--green-bright), var(--green));
+  box-shadow: 0 12px 28px rgba(51, 204, 130, .23);
+  color: #03150f;
+  font-size: 15px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.order-cta:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.order-cta span { font-size: 21px; line-height: 1; }
+.order-cta-bottom { width: min(520px, 100%); margin: 22px auto 0; }
+
 .product-catalog {
   margin-top: 26px;
   padding: 18px;
