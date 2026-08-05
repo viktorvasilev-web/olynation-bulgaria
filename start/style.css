@@ -222,6 +222,12 @@ h1 {
   box-shadow: var(--shadow);
 }
 
+.product-catalog-bottom {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto 46px;
+  padding: 24px;
+}
+
 .product-catalog-heading {
   margin-bottom: 15px;
   text-align: center;
@@ -588,6 +594,7 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .story-grid figure { margin-bottom: 8px; border-radius: 10px; }
   .story-grid .story-compact img { height: 135px; }
   .product-catalog { margin-top: 24px; padding: 14px; border-radius: 17px; }
+  .product-catalog-bottom { width: calc(100% - 28px); margin-top: 0; margin-bottom: 32px; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
   .product-card-copy { padding: 10px; }
   .product-card h3 { font-size: 11px; }
