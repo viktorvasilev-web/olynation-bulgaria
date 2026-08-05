@@ -230,8 +230,8 @@
                 </div>
                 <div class="field">
                   <label for="phone">Телефон</label>
-                  <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required pattern="[0-9]{7,15}" placeholder="359..." title="Въведи между 7 и 15 цифри, без интервали и символи.">
-                  <small class="field-hint">Въведи само цифри.</small>
+                  <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required pattern="\+?[0-9]{7,15}" placeholder="+359..." title="Номерът може да започва с +, а след него трябва да съдържа само цифри.">
+                  <small class="field-hint">Може да започне с „+“ (например +359), а след него се въвеждат само цифри.</small>
                 </div>
                 <div class="field">
                   <label for="email">Имейл</label>
