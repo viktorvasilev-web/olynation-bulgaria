@@ -7,6 +7,14 @@
     {
       "source": "/georgiochkov/",
       "destination": "/georgiochkov/index.html"
+    },
+    {
+      "source": "/olylife",
+      "destination": "/olylife/index.html"
+    },
+    {
+      "source": "/olylife/",
+      "destination": "/olylife/index.html"
     }
   ]
 }
