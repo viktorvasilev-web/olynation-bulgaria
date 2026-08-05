@@ -10,6 +10,48 @@ const sameDeliveryAddress = document.getElementById('same-delivery-address');
 const registeredAddress = document.getElementById('order-registered-address');
 const deliveryAddress = document.getElementById('order-delivery-address');
 
+const PARTNER_PROFILES = {
+  '/georgiochkov': {
+    code: 'georgiochkov',
+    name: 'Георги Очков',
+    firstName: 'Георги',
+    photo: 'georgi-ochkov-portrait.png'
+  }
+};
+
+const currentPath = window.location.pathname.replace(/\/+$/, '').toLowerCase();
+const activePartner = PARTNER_PROFILES[currentPath] || null;
+const partnerCode = activePartner ? activePartner.code : 'viktor';
+
+document.querySelectorAll('form').forEach(form => {
+  const partnerField = document.createElement('input');
+  partnerField.type = 'hidden';
+  partnerField.name = 'partner';
+  partnerField.value = partnerCode;
+  form.appendChild(partnerField);
+});
+
+if (activePartner) {
+  document.title = `${activePartner.name} | OlyNation партньорска програма`;
+
+  const aboutTitle = document.getElementById('about-title');
+  const aboutPhoto = document.querySelector('.about-photo-wrap img');
+  const heroEyebrow = document.querySelector('.hero-inner > .eyebrow');
+
+  if (aboutTitle) {
+    aboutTitle.innerHTML = `<span aria-hidden="true">👋</span> Здравей! Аз съм ${activePartner.firstName}…`;
+  }
+
+  if (aboutPhoto) {
+    aboutPhoto.src = activePartner.photo;
+    aboutPhoto.alt = activePartner.name;
+  }
+
+  if (heroEyebrow) {
+    heroEyebrow.textContent = `OlyNation партньорска програма с ${activePartner.name}`;
+  }
+}
+
 document.querySelectorAll('.contact-quiz').forEach(quiz => {
   const form = quiz.querySelector('form');
   const steps = quiz.querySelectorAll('.quiz-step');

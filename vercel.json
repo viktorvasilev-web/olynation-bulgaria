@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/georgiochkov",
+      "destination": "/start/index.html"
+    },
+    {
+      "source": "/georgiochkov/",
+      "destination": "/start/index.html"
+    }
+  ]
+}

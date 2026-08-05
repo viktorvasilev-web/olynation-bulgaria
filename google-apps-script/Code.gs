@@ -1,5 +1,9 @@
 const CONTACTS_SHEET = 'Контакти';
 const NOTIFICATION_EMAIL = 'viktorsfsl@gmail.com';
+const PARTNER_EMAILS = {
+  viktor: NOTIFICATION_EMAIL,
+  georgiochkov: 'Georgi.ochkov@yahoo.de'
+};
 
 function testNotificationEmail() {
   MailApp.sendEmail({
@@ -9,6 +13,16 @@ function testNotificationEmail() {
   });
 
   console.log('Test email sent. Remaining daily quota: ' + MailApp.getRemainingDailyQuota());
+}
+
+function testGeorgiNotificationEmail() {
+  MailApp.sendEmail({
+    to: PARTNER_EMAILS.georgiochkov,
+    subject: 'Тестово известие за страницата на Георги Очков',
+    body: 'Имейл известията от oly.bg/georgiochkov работят успешно.'
+  });
+
+  console.log('Georgi test email sent. Remaining daily quota: ' + MailApp.getRemainingDailyQuota());
 }
 
 function doPost(event) {
@@ -28,6 +42,7 @@ function doPost(event) {
     const consent = clean(data.consent);
     const source = clean(data.source);
     const interest = clean(data.interest);
+    const partner = clean(data.partner).toLowerCase() || 'viktor';
 
     if (!name || !phone || !email || !consent) {
       return jsonResponse({ ok: false, error: 'Missing required fields' });
@@ -38,11 +53,15 @@ function doPost(event) {
 
     if (!sheet) {
       sheet = spreadsheet.insertSheet(CONTACTS_SHEET);
-      sheet.appendRow(['Дата', 'Име', 'Телефон', 'Имейл', 'Съгласие', 'Източник']);
+      sheet.appendRow(['Дата', 'Име', 'Телефон', 'Имейл', 'Съгласие', 'Източник', 'Партньор']);
       sheet.setFrozenRows(1);
     }
 
-    sheet.appendRow([new Date(), name, phone, email, 'Да', source]);
+    if (sheet.getRange(1, 7).getValue() !== 'Партньор') {
+      sheet.getRange(1, 7).setValue('Партньор');
+    }
+
+    sheet.appendRow([new Date(), name, phone, email, 'Да', source, partner]);
 
     try {
       sendNotificationEmail({
@@ -50,7 +69,8 @@ function doPost(event) {
         phone: phone,
         email: email,
         interest: interest,
-        source: source
+        source: source,
+        partner: partner
       });
     } catch (mailError) {
       console.error('Email notification failed: ' + mailError);
@@ -63,6 +83,7 @@ function doPost(event) {
 }
 
 function sendNotificationEmail(contact) {
+  const recipientEmail = PARTNER_EMAILS[contact.partner] || NOTIFICATION_EMAIL;
   const isOrder = contact.source.indexOf('ПОРЪЧКА') === 0;
   const requestType = isOrder
     ? 'Поръчка на продукт'
@@ -98,11 +119,11 @@ function sendNotificationEmail(contact) {
   ].join('');
 
   MailApp.sendEmail({
-    to: NOTIFICATION_EMAIL,
+    to: recipientEmail,
     subject: subject,
     body: body,
     htmlBody: htmlBody,
-    replyTo: isValidEmail(contact.email) ? contact.email : NOTIFICATION_EMAIL
+    replyTo: isValidEmail(contact.email) ? contact.email : recipientEmail
   });
 }
 
