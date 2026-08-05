@@ -1,6 +1,16 @@
 const CONTACTS_SHEET = 'Контакти';
 const NOTIFICATION_EMAIL = 'viktorsfsl@gmail.com';
 
+function testNotificationEmail() {
+  MailApp.sendEmail({
+    to: NOTIFICATION_EMAIL,
+    subject: 'Тестово известие от OlyNation',
+    body: 'Имейл известията от формата работят успешно.'
+  });
+
+  console.log('Test email sent. Remaining daily quota: ' + MailApp.getRemainingDailyQuota());
+}
+
 function doPost(event) {
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
