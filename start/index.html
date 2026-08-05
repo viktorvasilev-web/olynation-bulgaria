@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="p90-logo.png">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player" defer></script>
 </head>
 <body>
   <div class="announcement">Грижа за себе си от ново поколение</div>
@@ -37,14 +38,13 @@
         <div class="video-column">
           <p class="sound-prompt">🔈 Пусни звука и гледай видеото, за да научиш повече за технологията, с която работят уредите...</p>
           <div class="video-frame">
-            <iframe
-              src="https://player.mux.com/CYtT84YE00C7fg02wyC01xlA9PT4QhiWLrhS1uysj1hZ7A"
-              title="PEMF: Документалната история"
-              loading="lazy"
-              allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
+            <mux-player
+              playback-id="CYtT84YE00C7fg02wyC01xlA9PT4QhiWLrhS1uysj1hZ7A"
+              poster="tesla-pemf-thumbnail.png"
+              metadata-video-title="PEMF: Документалната история"
+              accent-color="#64dd9a"
+              preload="metadata"
+            ></mux-player>
           </div>
           <div class="video-frame secondary-video">
             <iframe
