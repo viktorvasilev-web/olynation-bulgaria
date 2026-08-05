@@ -213,6 +213,23 @@ h1 {
 .story-grid .story-compact img { height: 190px; object-fit: contain; }
 .story-disclaimer { margin: 5px 0 0; color: var(--muted); text-align: center; font-size: 9px; line-height: 1.45; }
 
+.side-stories {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.side-stories figure {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid rgba(100, 221, 154, .28);
+  border-radius: 18px;
+  background: #071c16;
+  box-shadow: var(--shadow);
+}
+
+.side-stories img { display: block; width: 100%; height: auto; }
+
 .product-catalog {
   margin-top: 26px;
   padding: 18px;
@@ -593,6 +610,8 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .story-grid { column-gap: 8px; }
   .story-grid figure { margin-bottom: 8px; border-radius: 10px; }
   .story-grid .story-compact img { height: 135px; }
+  .side-stories { gap: 10px; margin-top: 18px; }
+  .side-stories figure { border-radius: 14px; }
   .product-catalog { margin-top: 24px; padding: 14px; border-radius: 17px; }
   .product-catalog-bottom { width: calc(100% - 28px); margin-top: 0; margin-bottom: 32px; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
