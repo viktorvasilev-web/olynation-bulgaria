@@ -331,6 +331,16 @@ h1 {
   font-style: italic;
 }
 
+.content-feature-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .24);
+}
+
 .story-gallery {
   margin-top: 26px;
   padding: 18px;
