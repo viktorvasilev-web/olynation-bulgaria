@@ -306,6 +306,8 @@ h1 {
   font-weight: 500;
 }
 
+.video-section-title { margin: 22px 0 14px; }
+
 .video-frame {
   position: relative;
   overflow: hidden;
@@ -319,6 +321,7 @@ h1 {
 .video-frame iframe,
 .video-frame mux-player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .secondary-video { margin-top: 22px; }
+.video-section-title + .secondary-video { margin-top: 0; }
 
 .video-note {
   margin: 18px 0 0;
