@@ -546,6 +546,7 @@ h1 {
 .benefit p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
 .benefit p + p { margin-top: 10px; }
 .benefit-detail-image {
+  grid-column: 1 / -1;
   display: block;
   width: 100%;
   height: auto;
