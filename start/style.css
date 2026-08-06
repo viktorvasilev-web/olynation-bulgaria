@@ -544,6 +544,16 @@ h1 {
 .check { color: var(--green); font-size: 24px; font-weight: 900; line-height: 1; }
 .benefit h3 { margin: 0 0 6px; font-size: 18px; line-height: 1.22; }
 .benefit p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.benefit p + p { margin-top: 10px; }
+.benefit-detail-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .24);
+}
 
 .bonuses {
   display: grid;
