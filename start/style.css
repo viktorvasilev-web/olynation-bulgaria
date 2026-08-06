@@ -353,6 +353,7 @@ h1 {
 .story-gallery-heading { margin-bottom: 14px; text-align: center; }
 .story-gallery-heading .eyebrow { margin: 0 0 4px; font-size: 9px; }
 .story-gallery-heading h2 { margin: 0; color: #f4fbf8; font-size: clamp(20px, 2.7vw, 28px); }
+.story-feature-video { margin-bottom: 14px; }
 .story-grid { columns: 2; column-gap: 10px; }
 .story-grid figure {
   overflow: hidden;
