@@ -555,6 +555,8 @@ h1 {
   border-radius: 12px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, .24);
 }
+.company-benefits .benefit + .benefit { margin-top: 14px; padding-top: 14px; }
+.company-benefits .benefit-detail-image { margin-top: 6px; }
 
 .bonuses {
   display: grid;
