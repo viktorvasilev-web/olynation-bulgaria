@@ -883,8 +883,8 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .content-section { padding: 10px 14px 28px; }
   .sound-prompt { font-size: 13px; }
   .story-gallery { margin-top: 24px; padding: 14px; border-radius: 17px; }
-  .story-grid { column-gap: 8px; }
-  .story-grid figure { margin-bottom: 8px; border-radius: 10px; }
+  .story-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); columns: auto; gap: 8px; }
+  .story-grid figure { margin: 0; border-radius: 10px; }
   .story-grid .story-compact img { height: 135px; }
   .side-stories { gap: 10px; margin-top: 18px; }
   .side-stories figure { border-radius: 14px; }
