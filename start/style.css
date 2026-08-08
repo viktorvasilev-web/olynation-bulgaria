@@ -590,6 +590,7 @@ h1 {
 }
 .company-benefits .benefit + .benefit { margin-top: 14px; padding-top: 14px; }
 .company-benefits .benefit-detail-image { margin-top: 6px; }
+.company-benefits .benefit:last-of-type { margin-top: 8px; padding-top: 0; border-top: 0; }
 
 .bonuses {
   display: grid;
