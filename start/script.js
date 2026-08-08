@@ -169,12 +169,35 @@ document.querySelectorAll('.contact-quiz').forEach(quiz => {
       return;
     }
 
+    const selectedInterest = form.querySelector('input[name="interest"]:checked')?.value;
+    const isPartnerProgram = selectedInterest === 'Повече информация за партньорската програма';
+
     form.action = FORM_ENDPOINT;
     form.elements.source.value = window.location.href;
+
+    if (isPartnerProgram) {
+      const submitFrame = document.querySelector('iframe[name="form-submit-frame"]');
+      let hasRedirected = false;
+      const redirectToPartnerProgram = () => {
+        if (hasRedirected) return;
+        hasRedirected = true;
+        window.location.assign('https://www.oly.bg/start');
+      };
+
+      submitFrame?.addEventListener('load', redirectToPartnerProgram, { once: true });
+      window.setTimeout(redirectToPartnerProgram, 4000);
+    }
+
     HTMLFormElement.prototype.submit.call(form);
 
     form.reset();
     showQuizStep(1);
+
+    if (isPartnerProgram) {
+      submitMessage.textContent = 'Данните ти бяха изпратени. Пренасочваме те към партньорската програма…';
+      return;
+    }
+
     thankYouMessage.textContent = 'Данните ти бяха изпратени успешно. Ще се свържа с теб възможно най-скоро.';
     thankYou.hidden = false;
     document.body.style.overflow = 'hidden';
