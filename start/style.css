@@ -539,6 +539,7 @@ h1 {
 .testimonial-video mux-player { position: absolute; inset: 0; width: 100%; height: 100%; }
 .community-testimonial-column { min-width: 0; }
 .testimonial-followup-image { display: block; width: 100%; max-width: 100%; height: auto; margin-top: 18px; }
+.testimonial-followup-note { margin: 14px 0 0; padding: 14px 16px; border-radius: 12px; background: rgba(100, 221, 154, .1); color: #f3faf7; text-align: center; font-size: 13px; font-weight: 700; line-height: 1.55; }
 
 .community-showcase {
   width: min(1180px, calc(100% - 48px));
