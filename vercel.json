@@ -15,6 +15,14 @@
     {
       "source": "/olylife/",
       "destination": "/olylife/index.html"
+    },
+    {
+      "source": "/p90",
+      "destination": "/p90/index.html"
+    },
+    {
+      "source": "/p90/",
+      "destination": "/p90/index.html"
     }
   ]
 }
