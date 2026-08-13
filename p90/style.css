@@ -41,9 +41,9 @@ img { max-width: 100%; }
 .button-secondary { border: 1px solid var(--line); background: rgba(255, 255, 255, .04); color: var(--text); }
 .hero-points { display: flex; flex-wrap: wrap; gap: 9px; padding: 0; margin: 28px 0 0; list-style: none; }
 .hero-points li { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 11px; font-weight: 700; }
-.hero-product { position: relative; isolation: isolate; display: grid; place-items: center; width: min(100%, 560px); min-width: 0; margin-inline: auto; padding: 12px; border: 1px solid rgba(131, 244, 104, .34); border-radius: 32px; background: linear-gradient(145deg, rgba(18, 67, 51, .88), rgba(4, 29, 22, .96)); box-shadow: 0 30px 80px rgba(0, 0, 0, .42), inset 0 1px 0 rgba(255, 255, 255, .08); }
+.hero-product { position: relative; isolation: isolate; align-self: center; display: grid; place-items: center; width: min(100%, 560px); aspect-ratio: 1 / 1; min-width: 0; margin-inline: auto; padding: 12px; overflow: hidden; border: 1px solid rgba(131, 244, 104, .34); border-radius: 32px; background: linear-gradient(145deg, rgba(18, 67, 51, .88), rgba(4, 29, 22, .96)); box-shadow: 0 30px 80px rgba(0, 0, 0, .42), inset 0 1px 0 rgba(255, 255, 255, .08); }
 .hero-product::after { content: ''; position: absolute; inset: 6px; z-index: 1; pointer-events: none; border: 1px solid rgba(229, 189, 99, .24); border-radius: 26px; }
-.hero-product img { position: relative; z-index: 2; display: block; width: 100%; aspect-ratio: 1.15 / 1; object-fit: cover; object-position: center top; border-radius: 22px; box-shadow: 0 18px 45px rgba(0, 0, 0, .3); }
+.hero-product img { position: relative; z-index: 2; display: block; width: 100%; height: 100%; aspect-ratio: 1 / 1; object-fit: contain; object-position: center; border-radius: 22px; box-shadow: 0 18px 45px rgba(0, 0, 0, .3); }
 .hero-glow { position: absolute; z-index: -1; width: 88%; aspect-ratio: 1; border-radius: 50%; background: rgba(78, 227, 147, .22); filter: blur(70px); }
 
 .trust-strip { display: grid; grid-template-columns: repeat(4, 1fr); width: min(1180px, calc(100% - 48px)); margin: -28px auto 0; position: relative; z-index: 3; border: 1px solid var(--line); border-radius: 20px; background: rgba(8, 39, 31, .96); box-shadow: var(--shadow); }
