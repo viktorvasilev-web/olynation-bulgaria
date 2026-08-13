@@ -97,7 +97,7 @@ img { max-width: 100%; }
 .testing-details span { display: block; margin-bottom: 4px; color: var(--green-bright); font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 .testing-details strong { color: #f2faf6; font-size: 12px; line-height: 1.35; }
 .contact-note { margin-top: 16px; padding: 12px; border-left: 3px solid var(--green); background: rgba(100, 221, 154, .08); color: #d9eee5; font-size: 11px; }
-.testing-registration-form { display: grid; gap: 8px; width: min(100%, 760px); margin: 0 auto; padding: 16px; border: 1px solid rgba(100, 221, 154, .2); border-radius: 14px; background: rgba(1, 18, 14, .52); }
+.testing-registration-form { display: grid; gap: 8px; width: 100%; margin: 0 0 18px; padding: 16px; border: 1px solid rgba(100, 221, 154, .2); border-radius: 14px; background: rgba(1, 18, 14, .52); }
 .testing-registration-form h3 { margin: 0 0 5px; color: #f2faf6; font-size: 17px; line-height: 1.25; }
 .testing-availability { margin: 0 0 5px; padding: 9px 10px; border-radius: 9px; background: rgba(100, 221, 154, .09); color: #ccecdf; font-size: 10px; line-height: 1.45; }
 .testing-availability.is-full { background: rgba(229, 189, 99, .1); color: #ead9aa; }
