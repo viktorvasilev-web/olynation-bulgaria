@@ -97,6 +97,15 @@ img { max-width: 100%; }
 .testing-details span { display: block; margin-bottom: 4px; color: var(--green-bright); font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 .testing-details strong { color: #f2faf6; font-size: 12px; line-height: 1.35; }
 .contact-note { margin-top: 16px; padding: 12px; border-left: 3px solid var(--green); background: rgba(100, 221, 154, .08); color: #d9eee5; font-size: 11px; }
+.testing-registration-form { display: grid; gap: 8px; margin-top: 18px; padding: 16px; border: 1px solid rgba(100, 221, 154, .2); border-radius: 14px; background: rgba(1, 18, 14, .52); }
+.testing-registration-form h3 { margin: 0 0 5px; color: #f2faf6; font-size: 17px; line-height: 1.25; }
+.testing-availability { margin: 0 0 5px; padding: 9px 10px; border-radius: 9px; background: rgba(100, 221, 154, .09); color: #ccecdf; font-size: 10px; line-height: 1.45; }
+.testing-availability.is-full { background: rgba(229, 189, 99, .1); color: #ead9aa; }
+.testing-registration-form label { color: #d9e8e2; font-size: 10px; font-weight: 800; }
+.testing-registration-form input { width: 100%; min-height: 43px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; outline: 0; background: rgba(1, 12, 9, .72); color: #fff; font: inherit; }
+.testing-registration-form input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(67, 213, 143, .12); }
+.testing-registration-form .form-message { min-height: 16px; }
+.testing-registration-form .button { width: 100%; margin-top: 2px; }
 .location-guide { overflow: hidden; width: min(100%, 410px); margin: 0 auto; border: 1px solid rgba(229, 189, 99, .32); border-radius: 15px; background: #060b09; }
 .location-guide img { display: block; width: 100%; height: auto; }
 .location-guide figcaption { padding: 10px 12px; color: #d9eee5; font-size: 10px; line-height: 1.45; text-align: center; }

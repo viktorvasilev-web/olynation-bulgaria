@@ -1,6 +1,8 @@
 const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbykZyGaWdLvG5A2b0si3fjSkng9I84b0nLLsWo9jzF0mtU_w8im2MftD7aJNR_4CNShIg/exec';
 
 const orderForm = document.getElementById('p90-order-form');
+const testingRegistrationForm = document.getElementById('testing-registration-form');
+const testingAvailability = document.getElementById('testing-availability');
 const orderModal = document.getElementById('order-modal');
 const thankYou = document.getElementById('thank-you');
 const thankYouMessage = thankYou.querySelector('p');
@@ -33,6 +35,27 @@ function closeOrder() {
   document.body.style.overflow = '';
 }
 
+window.receiveTestingStatus = status => {
+  if (!status || !status.ok) {
+    testingAvailability.textContent = 'Не успяхме да проверим местата. Можеш да изпратиш записването си.';
+    return;
+  }
+
+  testingRegistrationForm.elements.event_date.value = status.eventDate;
+  testingAvailability.classList.toggle('is-full', status.currentWeekFull);
+  testingAvailability.textContent = status.currentWeekFull
+    ? `Тази седмица събитието е пълно. Записването е за следващото събитие на ${status.displayDate}.`
+    : `Записване за ${status.displayDate}. Остават ${status.remaining} свободни места.`;
+};
+
+const testingStatusScript = document.createElement('script');
+testingStatusScript.src = `${FORM_ENDPOINT}?action=testingStatus&callback=receiveTestingStatus`;
+testingStatusScript.async = true;
+testingStatusScript.onerror = () => {
+  testingAvailability.textContent = 'Не успяхме да проверим местата. Можеш да изпратиш записването си.';
+};
+document.head.appendChild(testingStatusScript);
+
 document.querySelectorAll('[data-open-order]').forEach(button => button.addEventListener('click', openOrder));
 document.querySelector('[data-close-order]').addEventListener('click', closeOrder);
 document.querySelector('[data-close-thank-you]').addEventListener('click', closeThankYou);
@@ -43,6 +66,20 @@ orderModal.addEventListener('click', event => {
 
 thankYou.addEventListener('click', event => {
   if (event.target === thankYou) closeThankYou();
+});
+
+testingRegistrationForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const message = testingRegistrationForm.querySelector('.form-message');
+  message.textContent = '';
+
+  if (!testingRegistrationForm.reportValidity() || testingRegistrationForm.elements.website.value) return;
+
+  const inviter = testingRegistrationForm.elements.inviter.value.trim();
+  const eventDate = testingRegistrationForm.elements.event_date.value || 'автоматично избрана дата';
+  submitToSheet(testingRegistrationForm, `P90 | Безплатно тестване | Дата: ${eventDate} | Поканен от: ${inviter} | Страница: ${window.location.href}`);
+  testingRegistrationForm.reset();
+  showThankYou(`Записването ти беше изпратено успешно. Очакваме те между 18:45 и 18:55 ч. за датата, показана във формата.`);
 });
 
 orderForm.addEventListener('submit', event => {
