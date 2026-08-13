@@ -526,15 +526,16 @@ h1 {
 .product-card-copy-featured {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 10px 12px;
+  gap: 12px 18px;
   align-items: center;
+  padding: 16px 18px 17px;
   background:
     radial-gradient(circle at 100% 0, rgba(73, 219, 139, .12), transparent 55%),
     linear-gradient(145deg, rgba(3, 30, 23, .98), rgba(2, 20, 16, .98));
 }
 .product-card-copy-featured h3 { grid-column: 1 / -1; min-height: 0; font-size: 14px; }
 .product-card-copy-featured .product-card-price { margin-top: 0; }
-.product-card-copy-featured .product-more { margin-top: 0; }
+.product-card-copy-featured .product-more { justify-self: end; margin: 0 2px 0 0; }
 
 .product-more { margin-top: 12px; }
 .product-more summary {
@@ -953,6 +954,7 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .product-card-copy { padding: 10px; }
   .product-card-copy-featured { grid-template-columns: 1fr; gap: 9px; }
   .product-card-copy-featured h3 { grid-column: auto; font-size: 12px; }
+  .product-card-copy-featured .product-more { justify-self: stretch; margin-right: 0; }
   .product-card-copy-featured .product-more summary { width: 100%; min-width: 0; }
   .product-card h3 { font-size: 11px; }
   .product-card-price { font-size: 17px; }
