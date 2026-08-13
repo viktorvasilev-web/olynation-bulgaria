@@ -74,6 +74,13 @@ img { max-width: 100%; }
 .visual-section { width: min(1180px, calc(100% - 48px)); margin: 0 auto; overflow: hidden; border: 1px solid var(--line); border-radius: 25px; background: #020a08; box-shadow: var(--shadow); }
 .visual-section img { display: block; width: 100%; height: auto; }
 
+.olywatch-section { display: grid; grid-template-columns: minmax(220px, 320px) minmax(0, 1fr); gap: 46px; align-items: center; width: min(900px, calc(100% - 48px)); padding: 36px; border: 1px solid rgba(229, 189, 99, .3); border-radius: 26px; background: radial-gradient(circle at 15% 20%, rgba(229, 189, 99, .14), transparent 48%), rgba(7, 39, 30, .86); box-shadow: var(--shadow); }
+.olywatch-image { overflow: hidden; width: min(100%, 280px); aspect-ratio: 480 / 848; margin: 0 auto; border: 1px solid rgba(229, 189, 99, .3); border-radius: 20px; background: #081b16; }
+.olywatch-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.olywatch-copy h2 { margin: 0; font-size: clamp(30px, 4vw, 46px); line-height: 1.12; letter-spacing: -.035em; }
+.olywatch-copy > p:not(.eyebrow) { margin: 16px 0 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+.olywatch-badge { display: inline-flex; gap: 10px; align-items: center; margin-top: 22px; padding: 12px 15px; border: 1px solid rgba(229, 189, 99, .35); border-radius: 14px; background: rgba(229, 189, 99, .1); color: #f2d889; font-size: 12px; }
+
 .routine-section { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(420px, .96fr); gap: 34px; align-items: center; margin-top: 72px; margin-bottom: 28px; padding: 34px; border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(145deg, rgba(11, 48, 38, .72), rgba(4, 27, 21, .78)); box-shadow: var(--shadow); }
 .routine-image { overflow: hidden; width: 100%; aspect-ratio: 1672 / 941; border: 1px solid var(--line); border-radius: 22px; background: #020a08; }
 .routine-image img { display: block; width: 100%; height: auto; }
@@ -163,7 +170,9 @@ footer a { color: var(--green-bright); }
   .trust-strip { grid-template-columns: repeat(2, 1fr); }
   .trust-strip div:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
   .trust-strip div:nth-child(4) { border-top: 1px solid var(--line); }
-  .routine-section, .safety-section, .location-layout { grid-template-columns: 1fr; }
+  .routine-section, .safety-section, .location-layout, .olywatch-section { grid-template-columns: 1fr; }
+  .olywatch-section { width: min(620px, calc(100% - 48px)); gap: 28px; text-align: center; }
+  .olywatch-copy { display: grid; justify-items: center; }
   .routine-section { width: min(720px, calc(100% - 48px)); padding: 28px; }
   .routine-image { aspect-ratio: 1672 / 941; }
   .experience-highlights { grid-template-columns: 1fr; }
@@ -197,6 +206,10 @@ footer a { color: var(--green-bright); }
   .technology-grid article { padding: 24px; }
   .experience-highlights article { padding: 16px; }
   .visual-section { width: calc(100% - 28px); border-radius: 17px; }
+  .olywatch-section { width: calc(100% - 28px); padding: 18px; border-radius: 20px; }
+  .olywatch-image { width: min(100%, 220px); border-radius: 16px; }
+  .olywatch-copy h2 { font-size: 31px; }
+  .olywatch-copy > p:not(.eyebrow) { font-size: 13px; }
   .routine-section { width: calc(100% - 28px); gap: 24px; margin-top: 40px; margin-bottom: 20px; padding: 14px; border-radius: 20px; }
   .routine-image { border-radius: 17px; }
   .routine-copy { padding: 5px 4px 8px; }
