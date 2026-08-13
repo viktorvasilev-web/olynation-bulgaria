@@ -863,6 +863,23 @@ h1 {
 .about-copy strong { color: var(--green-bright); }
 .about-copy blockquote { margin: 22px 0 0; padding: 15px 18px; border-left: 3px solid var(--green); border-radius: 0 12px 12px 0; background: rgba(63, 194, 137, .08); color: #effaf5; font-size: 17px; font-weight: 700; }
 
+.certification-video-section {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto 55px;
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(11, 46, 37, .98), rgba(3, 24, 19, .98));
+  box-shadow: var(--shadow);
+}
+
+.certification-video-heading { max-width: 760px; margin: 0 auto 24px; text-align: center; }
+.certification-video-heading .eyebrow { margin-bottom: 5px; }
+.certification-video-heading h2 { margin: 0; font-size: clamp(27px, 4vw, 42px); line-height: 1.08; }
+.certification-video-heading > p:last-child { margin: 12px auto 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.certification-video-frame { position: relative; overflow: hidden; width: min(960px, 100%); aspect-ratio: 16 / 9; margin: 0 auto; border: 1px solid rgba(100, 221, 154, .3); border-radius: 18px; background: #020d0a; box-shadow: 0 16px 38px rgba(0, 0, 0, .32); }
+.certification-video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
 .international-videos {
   width: min(1180px, calc(100% - 48px));
   margin: 0 auto 55px;
@@ -940,6 +957,11 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .order-intro { margin-bottom: 15px; font-size: 11px; }
   .product-catalog { margin-top: 24px; padding: 14px; border-radius: 17px; }
   .product-catalog-bottom { width: calc(100% - 28px); margin-top: 0; margin-bottom: 32px; }
+  .certification-video-section { width: calc(100% - 28px); margin-bottom: 32px; padding: 20px 14px; border-radius: 17px; }
+  .certification-video-heading { margin-bottom: 18px; }
+  .certification-video-heading h2 { font-size: 26px; }
+  .certification-video-heading > p:last-child { font-size: 13px; }
+  .certification-video-frame { border-radius: 13px; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
   .product-card-copy { padding: 10px; }
   .product-card-copy-featured { grid-template-columns: 1fr; gap: 9px; }
