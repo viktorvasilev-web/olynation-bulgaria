@@ -492,6 +492,11 @@ h1 {
 .product-catalog-heading .eyebrow { margin: 0 0 4px; font-size: 9px; }
 .product-catalog-heading h2 { margin: 0; color: #f4fbf8; font-size: clamp(20px, 2.7vw, 28px); }
 
+.product-technology-video { width: min(920px, 100%); margin: 22px auto 28px; }
+.product-technology-video h3 { margin: 0 0 15px; color: #f4fbf8; text-align: center; font-size: clamp(21px, 3vw, 32px); line-height: 1.15; }
+.product-technology-video-frame { position: relative; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid rgba(100, 221, 154, .3); border-radius: 18px; background: #020d0a; box-shadow: 0 16px 38px rgba(0, 0, 0, .32); }
+.product-technology-video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -972,6 +977,9 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .order-intro { margin-bottom: 15px; font-size: 11px; }
   .product-catalog { margin-top: 24px; padding: 14px; border-radius: 17px; }
   .product-catalog-bottom { width: calc(100% - 28px); margin-top: 0; margin-bottom: 32px; }
+  .product-technology-video { margin: 18px auto 22px; }
+  .product-technology-video h3 { margin-bottom: 12px; font-size: 21px; }
+  .product-technology-video-frame { border-radius: 13px; }
   .certification-video-section { width: calc(100% - 28px); margin-bottom: 32px; padding: 20px 14px; border-radius: 17px; }
   .certification-video-heading { margin-bottom: 18px; }
   .certification-video-heading h2 { font-size: 26px; }
