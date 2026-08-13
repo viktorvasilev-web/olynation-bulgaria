@@ -523,6 +523,19 @@ h1 {
 .product-card-price span { font-size: 9px; letter-spacing: .08em; }
 .product-card-note { margin: 0; color: var(--muted); font-size: 8px; line-height: 1.35; }
 
+.product-card-copy-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 12px;
+  align-items: center;
+  background:
+    radial-gradient(circle at 100% 0, rgba(73, 219, 139, .12), transparent 55%),
+    linear-gradient(145deg, rgba(3, 30, 23, .98), rgba(2, 20, 16, .98));
+}
+.product-card-copy-featured h3 { grid-column: 1 / -1; min-height: 0; font-size: 14px; }
+.product-card-copy-featured .product-card-price { margin-top: 0; }
+.product-card-copy-featured .product-more { margin-top: 0; }
+
 .product-more { margin-top: 12px; }
 .product-more summary {
   display: flex;
@@ -541,6 +554,17 @@ h1 {
   list-style: none;
   transition: background .2s ease, border-color .2s ease, color .2s ease;
 }
+.product-card-copy-featured .product-more summary {
+  min-width: 126px;
+  border: 0;
+  background: linear-gradient(135deg, #35b95e, #63dc86);
+  box-shadow: 0 8px 18px rgba(42, 190, 104, .2);
+  color: #fff;
+  font-size: 10px;
+  gap: 10px;
+}
+.product-card-copy-featured .product-more summary > span { font-size: 18px; line-height: 1; transition: transform .2s ease; }
+.product-card-copy-featured .product-more[open] summary > span { transform: rotate(90deg); }
 .product-more summary::-webkit-details-marker { display: none; }
 .product-more summary:hover,
 .product-more[open] summary { border-color: var(--green-bright); background: rgba(100, 221, 154, .12); color: #fff; }
@@ -927,6 +951,9 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .product-catalog-bottom { width: calc(100% - 28px); margin-top: 0; margin-bottom: 32px; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
   .product-card-copy { padding: 10px; }
+  .product-card-copy-featured { grid-template-columns: 1fr; gap: 9px; }
+  .product-card-copy-featured h3 { grid-column: auto; font-size: 12px; }
+  .product-card-copy-featured .product-more summary { width: 100%; min-width: 0; }
   .product-card h3 { font-size: 11px; }
   .product-card-price { font-size: 17px; }
   .testimonials { margin-top: 20px; padding: 18px 14px; border-radius: 17px; }
