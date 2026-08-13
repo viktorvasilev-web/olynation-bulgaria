@@ -74,15 +74,17 @@ img { max-width: 100%; }
 .visual-section { width: min(1180px, calc(100% - 48px)); margin: 0 auto; overflow: hidden; border: 1px solid var(--line); border-radius: 25px; background: #020a08; box-shadow: var(--shadow); }
 .visual-section img { display: block; width: 100%; height: auto; }
 
-.routine-section { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr); gap: 54px; align-items: center; }
-.routine-image { overflow: hidden; border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
-.routine-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.routine-copy > p:not(.eyebrow) { color: var(--muted); }
-.routine-copy ol { display: grid; gap: 15px; padding: 0; margin: 30px 0 0; list-style: none; }
-.routine-copy li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; }
-.routine-copy li > span { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 13px; background: rgba(100, 221, 154, .13); color: var(--green-bright); font-weight: 900; }
-.routine-copy strong { display: block; margin-top: 2px; }
-.routine-copy li p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+.routine-section { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(420px, .96fr); gap: 34px; align-items: center; margin-top: 72px; margin-bottom: 72px; padding: 34px; border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(145deg, rgba(11, 48, 38, .72), rgba(4, 27, 21, .78)); box-shadow: var(--shadow); }
+.routine-image { overflow: hidden; align-self: stretch; min-height: 100%; border: 1px solid var(--line); border-radius: 22px; background: #020a08; }
+.routine-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.routine-copy { min-width: 0; padding: 4px 2px; }
+.routine-copy h2 { max-width: 100%; font-size: clamp(30px, 3.2vw, 43px); text-wrap: balance; }
+.routine-copy > p:not(.eyebrow) { margin: 15px 0 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.routine-copy ol { display: grid; gap: 10px; padding: 0; margin: 22px 0 0; list-style: none; }
+.routine-copy li { display: grid; grid-template-columns: 38px 1fr; gap: 12px; align-items: start; padding: 12px; border: 1px solid rgba(100, 221, 154, .12); border-radius: 14px; background: rgba(1, 18, 14, .42); }
+.routine-copy li > span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; background: rgba(100, 221, 154, .13); color: var(--green-bright); font-weight: 900; }
+.routine-copy strong { display: block; margin-top: 0; font-size: 14px; }
+.routine-copy li p { margin: 3px 0 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
 
 .included-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .included-grid article { padding: 24px; }
@@ -152,6 +154,8 @@ footer a { color: var(--green-bright); }
   .trust-strip div:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
   .trust-strip div:nth-child(4) { border-top: 1px solid var(--line); }
   .routine-section, .safety-section, .location-layout { grid-template-columns: 1fr; }
+  .routine-section { width: min(720px, calc(100% - 48px)); padding: 28px; }
+  .routine-image { aspect-ratio: 16 / 9; }
   .experience-highlights { grid-template-columns: 1fr; }
   .included-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -183,8 +187,10 @@ footer a { color: var(--green-bright); }
   .technology-grid article { padding: 24px; }
   .experience-highlights article { padding: 16px; }
   .visual-section { width: calc(100% - 28px); border-radius: 17px; }
-  .routine-section { gap: 28px; }
+  .routine-section { width: calc(100% - 28px); gap: 24px; margin-top: 40px; margin-bottom: 40px; padding: 14px; border-radius: 20px; }
   .routine-image { border-radius: 17px; }
+  .routine-copy { padding: 5px 4px 8px; }
+  .routine-copy h2 { font-size: 31px; }
   .safety-section { width: calc(100% - 28px); margin-bottom: 62px; padding: 24px; border-radius: 18px; }
   .location-section { width: calc(100% - 28px); margin-bottom: 52px; padding: 22px 16px; border-radius: 20px; }
   .location-intro { margin-bottom: 20px; }
