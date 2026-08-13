@@ -6,6 +6,13 @@ const testingAvailability = document.getElementById('testing-availability');
 const orderModal = document.getElementById('order-modal');
 const thankYou = document.getElementById('thank-you');
 const thankYouMessage = thankYou.querySelector('p');
+let testingEventDisplayDate = '';
+
+function formatTestingDate(dateValue) {
+  if (!dateValue || !/^\d{4}-\d{2}-\d{2}$/.test(dateValue)) return '';
+  const [year, month, day] = dateValue.split('-');
+  return `${day}.${month}.${year}`;
+}
 
 function submitToSheet(form, source) {
   form.action = FORM_ENDPOINT;
@@ -42,6 +49,7 @@ window.receiveTestingStatus = status => {
   }
 
   testingRegistrationForm.elements.event_date.value = status.eventDate;
+  testingEventDisplayDate = status.displayDate || formatTestingDate(status.eventDate);
   testingAvailability.classList.toggle('is-full', status.currentWeekFull);
   testingAvailability.textContent = status.currentWeekFull
     ? `Тази седмица събитието е пълно. Записването е за следващото събитие на ${status.displayDate}.`
@@ -77,9 +85,12 @@ testingRegistrationForm.addEventListener('submit', event => {
 
   const inviter = testingRegistrationForm.elements.inviter.value.trim();
   const eventDate = testingRegistrationForm.elements.event_date.value || 'автоматично избрана дата';
+  const confirmedDate = testingEventDisplayDate || formatTestingDate(eventDate);
   submitToSheet(testingRegistrationForm, `P90 | Безплатно тестване | Дата: ${eventDate} | Поканен от: ${inviter} | Страница: ${window.location.href}`);
   testingRegistrationForm.reset();
-  showThankYou(`Записването ти беше изпратено успешно. Очакваме те между 18:45 и 18:55 ч. за датата, показана във формата.`);
+  showThankYou(confirmedDate
+    ? `Записването ти беше изпратено успешно. Очакваме те в понеделник, ${confirmedDate} г., между 18:45 и 18:55 ч.`
+    : 'Записването ти беше изпратено успешно. Очакваме те между 18:45 и 18:55 ч. Датата е тази, показана във формата.');
 });
 
 orderForm.addEventListener('submit', event => {
