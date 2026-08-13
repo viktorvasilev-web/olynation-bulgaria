@@ -55,7 +55,7 @@ img { max-width: 100%; }
 
 .section { width: min(1120px, calc(100% - 48px)); margin: 0 auto; padding: 92px 0; }
 .section-heading { max-width: 760px; margin: 0 auto 42px; text-align: center; }
-.section h2, .safety-section h2, .contact-section h2, .final-cta h2 { margin: 0; font-size: clamp(29px, 4.5vw, 48px); line-height: 1.14; letter-spacing: -.035em; }
+.section h2, .safety-section h2, .location-section h2, .final-cta h2 { margin: 0; font-size: clamp(29px, 4.5vw, 48px); line-height: 1.14; letter-spacing: -.035em; }
 .section-heading > p:last-child { margin: 18px auto 0; color: var(--muted); font-size: 16px; }
 .technology-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .technology-grid article, .included-grid article { position: relative; padding: 32px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(11, 48, 38, .98), rgba(4, 27, 21, .98)); box-shadow: var(--shadow); }
@@ -88,21 +88,23 @@ img { max-width: 100%; }
 .safety-section { display: grid; grid-template-columns: .8fr 1.2fr; gap: 46px; align-items: center; width: min(1120px, calc(100% - 48px)); margin: 0 auto 92px; padding: 34px; border: 1px solid rgba(229, 189, 99, .28); border-radius: 24px; background: rgba(229, 189, 99, .06); }
 .safety-section p:last-child { margin: 0; color: #d1c7ab; font-size: 13px; }
 
-.contact-section { display: grid; grid-template-columns: .86fr 1.14fr; gap: 58px; width: min(1120px, calc(100% - 48px)); margin: 0 auto 92px; padding: 50px; border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(145deg, rgba(11, 48, 38, .98), rgba(4, 27, 21, .98)); box-shadow: var(--shadow); }
-.contact-copy > p:not(.eyebrow) { color: var(--muted); }
-.testing-details { display: grid; gap: 10px; margin-top: 24px; }
+.location-section { width: min(1120px, calc(100% - 48px)); margin: 0 auto 92px; padding: 50px; border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(145deg, rgba(11, 48, 38, .98), rgba(4, 27, 21, .98)); box-shadow: var(--shadow); }
+.location-intro { max-width: 780px; margin: 0 auto 34px; text-align: center; }
+.location-intro > p:not(.eyebrow) { margin-bottom: 0; color: var(--muted); }
+.location-layout { display: grid; grid-template-columns: minmax(280px, .72fr) minmax(360px, 1.28fr); gap: 32px; align-items: start; }
+.testing-details { display: grid; gap: 12px; margin: 0; }
 .testing-details div { padding: 13px 15px; border: 1px solid rgba(100, 221, 154, .18); border-radius: 13px; background: rgba(1, 18, 14, .5); }
 .testing-details span { display: block; margin-bottom: 4px; color: var(--green-bright); font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 .testing-details strong { color: #f2faf6; font-size: 13px; line-height: 1.4; }
 .contact-note { margin-top: 25px; padding: 14px; border-left: 3px solid var(--green); background: rgba(100, 221, 154, .08); color: #d9eee5; font-size: 12px; }
-.location-guide { overflow: hidden; margin: 22px 0 0; border: 1px solid rgba(229, 189, 99, .32); border-radius: 17px; background: #060b09; }
+.location-guide { overflow: hidden; margin: 0; border: 1px solid rgba(229, 189, 99, .32); border-radius: 17px; background: #060b09; }
 .location-guide img { display: block; width: 100%; height: auto; }
 .location-guide figcaption { padding: 10px 12px; color: #d9eee5; font-size: 10px; line-height: 1.45; text-align: center; }
-.contact-form, .order-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
-.contact-form label, .order-form label { display: grid; gap: 7px; color: #d9e8e2; font-size: 11px; font-weight: 800; }
-.contact-form label:first-of-type, .contact-form .consent, .contact-form .form-message, .contact-form .form-submit, .order-form .wide { grid-column: 1 / -1; }
-.contact-form input, .order-form input { width: 100%; min-height: 49px; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; outline: 0; background: rgba(1, 16, 12, .72); color: white; }
-.contact-form input:focus, .order-form input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(67, 213, 143, .12); }
+.order-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+.order-form label { display: grid; gap: 7px; color: #d9e8e2; font-size: 11px; font-weight: 800; }
+.order-form .wide { grid-column: 1 / -1; }
+.order-form input { width: 100%; min-height: 49px; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; outline: 0; background: rgba(1, 16, 12, .72); color: white; }
+.order-form input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(67, 213, 143, .12); }
 .consent { display: flex !important; grid-template-columns: 18px 1fr !important; align-items: start; gap: 10px !important; font-weight: 500 !important; line-height: 1.5; }
 .consent input { width: 18px; min-height: 18px; height: 18px; margin-top: 2px; accent-color: var(--green); }
 .form-message { min-height: 20px; margin: 0; color: var(--green-bright); font-size: 12px; }
@@ -139,7 +141,7 @@ footer a { color: var(--green-bright); }
   .trust-strip { grid-template-columns: repeat(2, 1fr); }
   .trust-strip div:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
   .trust-strip div:nth-child(4) { border-top: 1px solid var(--line); }
-  .routine-section, .safety-section, .contact-section { grid-template-columns: 1fr; }
+  .routine-section, .safety-section, .location-layout { grid-template-columns: 1fr; }
   .included-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -172,9 +174,11 @@ footer a { color: var(--green-bright); }
   .routine-section { gap: 28px; }
   .routine-image { border-radius: 17px; }
   .safety-section { width: calc(100% - 28px); margin-bottom: 62px; padding: 24px; border-radius: 18px; }
-  .contact-section { width: calc(100% - 28px); margin-bottom: 62px; padding: 25px 18px; border-radius: 20px; }
-  .contact-form, .order-form { grid-template-columns: 1fr; }
-  .contact-form label, .contact-form .consent, .contact-form .form-message, .contact-form .form-submit, .order-form .wide { grid-column: auto; }
+  .location-section { width: calc(100% - 28px); margin-bottom: 62px; padding: 25px 18px; border-radius: 20px; }
+  .location-intro { margin-bottom: 24px; }
+  .location-layout { gap: 22px; }
+  .order-form { grid-template-columns: 1fr; }
+  .order-form .wide { grid-column: auto; }
   .final-cta { width: calc(100% - 28px); margin-bottom: 50px; padding: 38px 18px; border-radius: 20px; }
   .modal { padding: 10px; }
   .modal-dialog { margin: 8px auto; padding: 31px 17px 22px; border-radius: 19px; }

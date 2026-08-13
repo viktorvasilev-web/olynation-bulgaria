@@ -1,6 +1,5 @@
 const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbykZyGaWdLvG5A2b0si3fjSkng9I84b0nLLsWo9jzF0mtU_w8im2MftD7aJNR_4CNShIg/exec';
 
-const contactForm = document.getElementById('p90-contact-form');
 const orderForm = document.getElementById('p90-order-form');
 const orderModal = document.getElementById('order-modal');
 const thankYou = document.getElementById('thank-you');
@@ -44,18 +43,6 @@ orderModal.addEventListener('click', event => {
 
 thankYou.addEventListener('click', event => {
   if (event.target === thankYou) closeThankYou();
-});
-
-contactForm.addEventListener('submit', event => {
-  event.preventDefault();
-  const message = contactForm.querySelector('.form-message');
-  message.textContent = '';
-
-  if (!contactForm.reportValidity() || contactForm.elements.website.value) return;
-
-  submitToSheet(contactForm, `P90 | Безплатно тестване | Страница: ${window.location.href}`);
-  contactForm.reset();
-  showThankYou('Заявката ти за безплатно тестване беше изпратена успешно. Ще се свържа с теб възможно най-скоро.');
 });
 
 orderForm.addEventListener('submit', event => {
