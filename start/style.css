@@ -588,6 +588,9 @@ h1 {
 .community-testimonial-column .testimonials { height: 100%; }
 .testimonial-followup-image { display: block; width: 100%; max-width: 100%; height: auto; margin-top: 18px; }
 .testimonial-followup-note { margin: 14px 0 0; padding: 14px 16px; border-radius: 12px; background: rgba(100, 221, 154, .1); color: #f3faf7; text-align: center; font-size: 13px; font-weight: 700; line-height: 1.55; }
+.testimonial-followup-cta { display: flex; align-items: center; justify-content: center; gap: 14px; width: min(520px, calc(100% - 24px)); min-height: 58px; margin: 18px auto 0; padding: 14px 24px; border-radius: 999px; background: linear-gradient(135deg, #42d99a, #7ef262); color: #031711; text-align: center; font-size: 14px; font-weight: 900; line-height: 1.3; text-decoration: none; box-shadow: 0 14px 30px rgba(72, 226, 145, .2); transition: transform .2s ease, filter .2s ease; }
+.testimonial-followup-cta:hover { transform: translateY(-2px); filter: brightness(1.06); }
+.testimonial-followup-cta span { font-size: 22px; line-height: 1; }
 
 .community-showcase {
   width: min(1180px, calc(100% - 48px));
@@ -996,6 +999,7 @@ footer { padding: 24px; color: #7f988f; text-align: center; font-size: 12px; }
   .testimonials { margin-top: 20px; padding: 18px 14px; border-radius: 17px; }
   .testimonial-grid { grid-template-columns: 1fr; gap: 18px; }
   .testimonial-video { width: min(100%, 300px); }
+  .testimonial-followup-cta { width: 100%; min-height: 52px; padding: 13px 16px; font-size: 12px; }
   .benefits { padding: 23px 19px; border-radius: 18px; }
   .benefit { grid-template-columns: 24px 1fr; }
   .benefit h3 { font-size: 17px; }

@@ -145,6 +145,22 @@ document.querySelectorAll('.contact-quiz').forEach(quiz => {
     if (isSecondStep) form.elements.name.focus();
   }
 
+  document.querySelectorAll('[data-direct-interest]').forEach(button => {
+    button.addEventListener('click', event => {
+      const requestedInterest = button.dataset.directInterest;
+      const matchingOption = Array.from(form.querySelectorAll('input[name="interest"]'))
+        .find(option => option.value === requestedInterest);
+
+      if (!matchingOption) return;
+
+      event.preventDefault();
+      matchingOption.checked = true;
+      choiceMessage.textContent = '';
+      showQuizStep(2);
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
   nextButton.addEventListener('click', () => {
     const selectedInterest = form.querySelector('input[name="interest"]:checked');
     if (!selectedInterest) {
