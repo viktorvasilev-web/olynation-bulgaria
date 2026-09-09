@@ -17,6 +17,14 @@
       "destination": "/olylife/index.html"
     },
     {
+      "source": "/olylifeeng",
+      "destination": "/olylifeeng/index.html"
+    },
+    {
+      "source": "/olylifeeng/",
+      "destination": "/olylifeeng/index.html"
+    },
+    {
       "source": "/viktorvasilev",
       "destination": "/viktorvasilev/index.html"
     },
