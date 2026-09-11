@@ -33,6 +33,14 @@
       "destination": "/terapiq/index.html"
     },
     {
+      "source": "/terapiq/thanks",
+      "destination": "/terapiq/thanks/index.html"
+    },
+    {
+      "source": "/terapiq/thanks/",
+      "destination": "/terapiq/thanks/index.html"
+    },
+    {
       "source": "/viktorvasilev",
       "destination": "/viktorvasilev/index.html"
     },

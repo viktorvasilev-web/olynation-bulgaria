@@ -2,8 +2,19 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbykZyGaWdLvG5A2b0
 
 const form = document.getElementById('therapy-form');
 const formMessage = document.getElementById('form-message');
-const successMessage = document.getElementById('success-message');
 const submitButton = form?.querySelector('.submit-button');
+const submitFrame = document.querySelector('iframe[name="therapy-submit-frame"]');
+let submissionStarted = false;
+let redirectFallback;
+
+const openThankYouPage = () => {
+  window.clearTimeout(redirectFallback);
+  window.location.assign('/terapiq/thanks');
+};
+
+submitFrame?.addEventListener('load', () => {
+  if (submissionStarted) openThankYouPage();
+});
 
 if (form) {
   form.action = FORM_ENDPOINT;
@@ -18,14 +29,9 @@ if (form) {
     form.elements.source.value = `ТЕРАПИЯ | Страница: ${window.location.href}`;
     submitButton.disabled = true;
     submitButton.textContent = 'Изпращане…';
+    submissionStarted = true;
 
     HTMLFormElement.prototype.submit.call(form);
-
-    window.setTimeout(() => {
-      form.hidden = true;
-      document.querySelector('.page-header').hidden = true;
-      successMessage.hidden = false;
-      successMessage.focus?.();
-    }, 900);
+    redirectFallback = window.setTimeout(openThankYouPage, 6000);
   });
 }
