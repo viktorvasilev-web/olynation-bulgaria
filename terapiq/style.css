@@ -78,10 +78,17 @@ body {
 
 h1 {
   margin: 0;
-  font-size: clamp(1.78rem, 8vw, 2.25rem);
-  line-height: 1.08;
-  letter-spacing: -0.045em;
-  text-transform: uppercase;
+  font-size: clamp(1.45rem, 6.5vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+}
+
+h1 span {
+  display: block;
+  margin-top: 2px;
+  color: var(--green);
+  font-weight: 800;
 }
 
 .page-header p,
@@ -258,7 +265,7 @@ footer {
   }
 
   h1 {
-    font-size: 1.55rem;
+    font-size: 1.38rem;
   }
 
   .page-header p {
