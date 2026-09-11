@@ -159,6 +159,8 @@ form {
 }
 
 .submit-button {
+  position: relative;
+  overflow: hidden;
   width: 100%;
   min-height: 52px;
   margin-top: 13px;
@@ -169,12 +171,27 @@ form {
   border: 0;
   border-radius: 12px;
   cursor: pointer;
-  background: linear-gradient(110deg, var(--green), #93eba7 62%, var(--gold));
+  background: linear-gradient(110deg, #e1bd6d, #f0d895);
   box-shadow: 0 12px 30px rgba(43, 200, 113, 0.2);
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.submit-button span {
+.submit-button::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(110deg, var(--green), #92eba6 68%, #b9efad);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.button-label {
+  position: relative;
+  z-index: 1;
+}
+
+.button-arrow {
   display: inline-block;
   transition: transform 180ms ease;
 }
@@ -185,13 +202,22 @@ form {
     box-shadow: -4px 14px 34px rgba(43, 200, 113, 0.28);
   }
 
-  .submit-button:hover span {
+  .submit-button:hover::before {
+    transform: scaleX(1);
+  }
+
+  .submit-button:hover .button-arrow {
     transform: translateX(4px);
   }
 }
 
 .submit-button:active {
   transform: translateX(3px);
+}
+
+.submit-button:active::before,
+.submit-button:focus-visible::before {
+  transform: scaleX(1);
 }
 
 .submit-button:focus-visible {
