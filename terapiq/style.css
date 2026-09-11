@@ -171,6 +171,27 @@ form {
   cursor: pointer;
   background: linear-gradient(110deg, var(--green), #93eba7 62%, var(--gold));
   box-shadow: 0 12px 30px rgba(43, 200, 113, 0.2);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.submit-button span {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .submit-button:hover {
+    transform: translateX(6px);
+    box-shadow: -4px 14px 34px rgba(43, 200, 113, 0.28);
+  }
+
+  .submit-button:hover span {
+    transform: translateX(4px);
+  }
+}
+
+.submit-button:active {
+  transform: translateX(3px);
 }
 
 .submit-button:focus-visible {
