@@ -45,8 +45,9 @@ body {
   min-height: calc(100dvh - 72px);
   margin: 0 auto;
   padding: max(14px, env(safe-area-inset-top)) 0 12px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .form-card {
@@ -59,9 +60,10 @@ body {
 }
 
 .brand {
-  width: 78px;
-  margin: 0 auto 12px;
+  width: 58px;
+  margin: 0 auto 10px;
   display: block;
+  flex: 0 0 auto;
 }
 
 .brand img {
@@ -227,8 +229,8 @@ footer {
   }
 
   .brand {
-    width: 86px;
-    margin-bottom: 16px;
+    width: 64px;
+    margin-bottom: 12px;
   }
 
   form {
@@ -238,7 +240,7 @@ footer {
 
 @media (max-height: 620px) {
   .page-shell {
-    place-items: start center;
+    justify-content: flex-start;
   }
 
   .form-card {
@@ -247,8 +249,8 @@ footer {
   }
 
   .brand {
-    width: 64px;
-    margin-bottom: 8px;
+    width: 52px;
+    margin-bottom: 6px;
   }
 
   h1 {
