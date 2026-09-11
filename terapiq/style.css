@@ -293,6 +293,10 @@ form {
   font-size: 1rem;
 }
 
+.thank-you-copy p {
+  margin: 0;
+}
+
 .sr-only,
 .honeypot,
 .submit-frame {

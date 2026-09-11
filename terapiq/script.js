@@ -9,7 +9,9 @@ let redirectFallback;
 
 const openThankYouPage = () => {
   window.clearTimeout(redirectFallback);
-  window.location.assign('/terapiq/thanks');
+  const city = form?.elements.city?.value.trim() || '';
+  const params = new URLSearchParams({ city });
+  window.location.assign(`/terapiq/thanks?${params.toString()}`);
 };
 
 submitFrame?.addEventListener('load', () => {
@@ -26,7 +28,8 @@ if (form) {
     if (!form.reportValidity()) return;
     if (form.elements.website.value) return;
 
-    form.elements.source.value = `ТЕРАПИЯ | Страница: ${window.location.href}`;
+    const city = form.elements.city.value.trim();
+    form.elements.source.value = `ТЕРАПИЯ | Град: ${city} | Страница: ${window.location.href}`;
     submitButton.disabled = true;
     submitButton.textContent = 'Изпращане…';
     submissionStarted = true;
