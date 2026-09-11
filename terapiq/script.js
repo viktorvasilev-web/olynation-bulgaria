@@ -23,7 +23,7 @@ if (form) {
 
     window.setTimeout(() => {
       form.hidden = true;
-      document.querySelector('.form-heading').hidden = true;
+      document.querySelector('.page-header').hidden = true;
       successMessage.hidden = false;
       successMessage.focus?.();
     }, 900);
