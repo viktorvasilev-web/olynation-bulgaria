@@ -28,12 +28,12 @@ body {
 }
 
 .announcement {
-  min-height: 34px;
-  padding: 9px 16px 8px;
+  min-height: 32px;
+  padding: 8px 16px 7px;
   color: #07120d;
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   line-height: 1.4;
   text-align: center;
   background: linear-gradient(90deg, #d7a94e, #f1d58e, #d7a94e);
@@ -41,13 +41,13 @@ body {
 
 .page-shell {
   width: min(100% - 28px, 430px);
-  min-height: calc(100vh - 72px);
-  min-height: calc(100dvh - 72px);
+  min-height: calc(100vh - 70px);
+  min-height: calc(100dvh - 70px);
   margin: 0 auto;
-  padding: max(14px, env(safe-area-inset-top)) 0 12px;
+  padding: max(12px, env(safe-area-inset-top)) 0 12px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .form-card {
@@ -224,6 +224,10 @@ footer {
 }
 
 @media (min-width: 700px) {
+  .page-shell {
+    justify-content: center;
+  }
+
   .form-card {
     padding: 26px 30px 30px;
   }
