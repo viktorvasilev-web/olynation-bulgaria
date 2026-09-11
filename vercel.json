@@ -25,6 +25,14 @@
       "destination": "/olylifeeng/index.html"
     },
     {
+      "source": "/terapiq",
+      "destination": "/terapiq/index.html"
+    },
+    {
+      "source": "/terapiq/",
+      "destination": "/terapiq/index.html"
+    },
+    {
       "source": "/viktorvasilev",
       "destination": "/viktorvasilev/index.html"
     },
