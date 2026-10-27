@@ -198,6 +198,34 @@ function setupCopyButtons() {
   });
 }
 
+function filterSection(input) {
+  const id = input.dataset.search;
+  const query = normalize(input.value);
+  const cards = document.querySelectorAll(`#list-${id} .card`);
+  let matches = 0;
+
+  cards.forEach(card => {
+    const title = card.querySelector('.card-title').textContent;
+    const visible = normalize(title).includes(query);
+    card.hidden = !visible;
+    if (visible) matches++;
+  });
+
+  document.getElementById(`count-${id}`).textContent = query
+    ? `${matches} от ${cards.length}`
+    : `${cards.length} материала`;
+  document.getElementById(`search-empty-${id}`).hidden = !query || matches > 0 || !cards.length;
+}
+
+function setupSearch() {
+  document.querySelectorAll('[data-search]').forEach(input => {
+    const count = document.getElementById(`count-${input.dataset.search}`);
+    count.setAttribute('role', 'status');
+    count.setAttribute('aria-atomic', 'true');
+    input.addEventListener('input', () => filterSection(input));
+  });
+}
+
 function render(section, items) {
   const list = document.getElementById(`list-${section.id}`);
   const count = document.getElementById(`count-${section.id}`);
@@ -231,6 +259,11 @@ function render(section, items) {
   `).join('');
 
   setupCopyButtons();
+  const search = document.querySelector(`[data-search="${section.id}"]`);
+  if (search) {
+    search.disabled = false;
+    filterSection(search);
+  }
 }
 
 function renderError(section, err) {
@@ -325,6 +358,7 @@ function setupTabs() {
 
 async function init() {
   setupTabs();
+  setupSearch();
   loadBanner();
   setInterval(loadBanner, 60000);
   document.addEventListener('visibilitychange', () => {
