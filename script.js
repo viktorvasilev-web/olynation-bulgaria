@@ -1,5 +1,4 @@
 const SHEET_ID = '1S821JtStrzWv9RZFSsOMCvYYuRKT6wL2DYQ-jzbrD_8';
-const BANNER_SHEET = 'Банер';
 const LANGUAGES_SHEET = 'Езици';
 
 const LANGUAGES = [
@@ -130,26 +129,23 @@ function tableToLanguageItems(table) {
   });
 }
 
-async function loadBanner() {
+function loadBanner(now = new Date()) {
   const banner = document.getElementById('promo-banner');
   if (!banner) return;
 
-  try {
-    const table = await loadSheetWithJsonp(BANNER_SHEET);
-    const items = tableToItems(table);
+  // Use the date in Bulgaria, even when the visitor is abroad.
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Sofia', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).formatToParts(now);
+  const value = type => Number(parts.find(part => part.type === type).value);
+  const monday = new Date(Date.UTC(value('year'), value('month') - 1, value('day')));
+  monday.setUTCDate(monday.getUTCDate() + (8 - monday.getUTCDay()) % 7);
 
-    if (!items.length) {
-      banner.style.display = 'none';
-      return;
-    }
-
-    banner.textContent = items[0].title;
-    banner.href = items[0].link;
-    banner.style.display = 'block';
-  } catch (err) {
-    banner.style.display = 'none';
-    console.error('Banner error:', err);
-  }
+  const month = new Intl.DateTimeFormat('bg-BG', {
+    timeZone: 'UTC', month: 'long',
+  }).format(monday).toLocaleUpperCase('bg-BG');
+  const date = `${String(monday.getUTCDate()).padStart(2, '0')} ${month}`;
+  banner.textContent = `${date} София, ул. Брегалница 53, 19:00-21:00`;
 }
 
 async function loadSheet(section) {
@@ -329,7 +325,11 @@ function setupTabs() {
 
 async function init() {
   setupTabs();
-  await loadBanner();
+  loadBanner();
+  setInterval(loadBanner, 60000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) loadBanner();
+  });
   await loadLanguages();
 
   for (const section of SECTIONS) {

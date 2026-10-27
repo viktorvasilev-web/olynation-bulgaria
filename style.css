@@ -36,11 +36,6 @@ body {
   box-shadow: 0 2px 14px rgba(0, 255, 0, .35);
 }
 
-.promo-bar:hover {
-  filter: brightness(1.08);
-  text-decoration: none;
-}
-
 .site-header {
   background: linear-gradient(135deg, #102804, var(--dark));
   color: white;
