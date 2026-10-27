@@ -278,11 +278,16 @@ footer {
   }
 
   .tabs {
-    justify-content: flex-start;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    gap: 6px;
   }
 
   .tab {
+    flex: 0 0 calc((100% - 12px) / 3);
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 6px;
+    font-size: 14px;
     white-space: nowrap;
   }
 
