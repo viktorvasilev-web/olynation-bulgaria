@@ -347,13 +347,38 @@ async function loadLanguages() {
 }
 
 function setupTabs() {
-  document.querySelectorAll('.tab').forEach(button => {
+  const tabs = document.querySelectorAll('.tab');
+  const sections = document.querySelectorAll('.content-section');
+
+  function showSectionFromUrl() {
+    const requested = window.location.hash.slice(1);
+    const target = Array.from(tabs).some(tab => tab.dataset.section === requested)
+      ? requested
+      : 'events';
+
+    tabs.forEach(tab => {
+      const active = tab.dataset.section === target;
+      tab.classList.toggle('active', active);
+      if (active) tab.setAttribute('aria-current', 'page');
+      else tab.removeAttribute('aria-current');
+    });
+    sections.forEach(section => section.classList.toggle('active', section.id === target));
+  }
+
+  tabs.forEach(button => {
     button.addEventListener('click', () => {
       const target = button.dataset.section;
-      document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === button));
-      document.querySelectorAll('.content-section').forEach(s => s.classList.toggle('active', s.id === target));
+      if (window.location.hash !== `#${target}`) {
+        // Update the address without jumping down to the section's anchor.
+        window.history.pushState(null, '', `#${target}`);
+      }
+      showSectionFromUrl();
     });
   });
+
+  window.addEventListener('popstate', showSectionFromUrl);
+  window.addEventListener('hashchange', showSectionFromUrl);
+  showSectionFromUrl();
 }
 
 async function init() {
